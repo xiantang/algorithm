@@ -1,6 +1,3 @@
-* 泛型: 集合类型的抽象数据类型 的一个关键性质我们可以存储任何类型的数据
-* 自动装箱: 将一个原始的数据类型转换为一个封装类型叫做自动装箱 
-```java
 package Chapter_1;
 
 import algs4.StdIn;
@@ -45,5 +42,3 @@ public class FixedCapacityStackOfString {
     }
 
 }
-```
-主要采用指针进行栈顶的操作
