@@ -47,3 +47,52 @@ public class FixedCapacityStackOfString {
 }
 ```
 主要采用指针进行栈顶的操作
+
+对`push`方法进行修改 当栈满了就将该栈   
+的长度*2
+
+```java
+public void resize(int max) {
+        Item[] temp = (Item[]) new Object[max];
+        for (int i = 0; i < max; i++) {
+            temp[i] = a[i];
+        }
+        a = temp;
+    }
+    public void push(Item item){
+        if (N == a.length) resize(2*a.length);
+        else a[N++] = item;
+    }
+```
+
+使栈的使用率永远不会低于1/4
+```java
+public Item pop(){
+        Item item = a[--N];
+        a[N] = null;
+        if(N>0 && N==a.length/4) resize(a.length/2);
+        return item;
+    }
+```
+* 垃圾游离:当一个用例不需要这个对象的时候  
+数组中还是会存留这个对象  java的垃圾回收器无法  
+知道这一点  除非这个引用被覆盖   
+我们这里需要将游离的对象设置为null即可
+
+* 嵌套类是可可以访问到实例的变量的
+```java
+public  class  ReveseArrayIterator implements Iterator<Item>{
+        private int i = N;
+        public boolean hasNext(){
+            return i>1;
+        }
+
+        public Item next(){
+            return a[i--];
+        }
+        public void remove(){
+
+        }
+
+    }
+```
