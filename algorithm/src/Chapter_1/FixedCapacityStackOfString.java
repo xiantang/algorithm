@@ -15,7 +15,18 @@ public class FixedCapacityStackOfString {
     public boolean isEmpty(){
         return N==0;
     }
+    public boolean isFull(){
+        /**
+        * @Description:
+        * @Param: []
+        * @return: boolean
+        * @Author: Mr.Zhu
+        * @Date: 18-8-12
+        */
+        return N==a.length;
+    }
     public void push(String item){
+
         a[N++] = item;
     }
     public int size(){
@@ -25,6 +36,7 @@ public class FixedCapacityStackOfString {
 
         return a[--N];
     }
+
 
     public static void main(String[] args) {
         FixedCapacityStackOfString s;

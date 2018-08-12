@@ -6,6 +6,29 @@ public class Stack<Item> implements Iterable<Item> {
     private class  Node{
         Item item;
         Node next;
+        Node(){
+
+        }
+        Node(Node x) {
+            /**
+            * @Description: 吊的飞起  用构造函数递归
+            * @Param: [x]
+            * @return:
+            * @Author: Mr.Zhu
+            * @Date: 18-8-12
+            */
+            item = x.item;
+            if (x.next != null) next = new Node(x.next);
+
+        }
+
+    }
+    public Stack(){
+
+    }
+    public Stack(Stack<Item> s,int N) {
+        first = new Node(s.first);
+        this.N = N;
     }
     private Node first;
     private int N;
@@ -26,7 +49,7 @@ public class Stack<Item> implements Iterable<Item> {
         return pop_item;
     }
     public class IteratorStack implements Iterator{
-        private int i = N-1;
+        private int i = N;
         private Node itFirst = first;
         @Override
         public boolean hasNext() {
@@ -35,11 +58,11 @@ public class Stack<Item> implements Iterable<Item> {
 
         @Override
         public Object next() {
-            Node nextItem = itFirst.next;
-            itFirst = nextItem;
+            Item nextItem = itFirst.item;
+            itFirst = itFirst.next;
             i--;
 
-            return nextItem.item;
+            return nextItem;
 
         }
     }
@@ -49,13 +72,15 @@ public class Stack<Item> implements Iterable<Item> {
     }
 
     public static void main(String[] args) {
-        Stack<String> s = new Stack<String>();
-        s.push("dd");
-        s.push("dd");
-        s.push("dd");
-        s.push("dd");
+        Stack<Integer> s = new Stack<Integer>();
+        int N = 50;
+        while (N>0){
+            s.push(N%2);
+            N = N/2;
+        }
+        Stack<Integer> t = new Stack<Integer>(s,s.N);
 
-        for (String i :s
+        for (int i:t
              ) {
             System.out.println(i);
         }

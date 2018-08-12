@@ -228,3 +228,47 @@ public class Stack<Item> implements Iterable<Item> {
 ```
 
 java 的迭代器在每次遍历会执行是否`hasNext()`如果为false 就断开 
+
+
+```java
+public void delLast(){
+        Node prelast = first ;
+        Node last = first.next;
+        if (first == null){
+            throw new NoSuchElementException();
+        }else  if (last == null){
+            first = null;
+        }else {
+            while (last.next!=null){
+                prelast = prelast.next;
+                last = last.next;
+            }
+            prelast.next = null;
+
+        }
+
+    }
+```
+删除最后一个元素
+
+使用构造函数传入一个栈复制他
+```java
+Node(Node x) {
+            /** 
+            * @Description: 吊的飞起  用构造函数递归 
+            * @Param: [x] 
+            * @return:  
+            * @Author: Mr.Zhu
+            * @Date: 18-8-12 
+            */ 
+            item = x.item;
+            if (x.next != null) next = new Node(x.next);
+
+        }
+public Stack(Stack<Item> s,int N) {
+        first = new Node(s.first);
+        this.N = N;
+    }
+```
+基线条件:当前节点没有next 就设置为null
+递归条件:当前节点有next 调用构造方法
