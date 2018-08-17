@@ -322,4 +322,42 @@ public class Selection extends Example{
 每次都选择第一个为最小的
 然后不断更新最小的值 
 将循环最后剩下的那个最小的值 
-和第一个最小的值作为交换 QD
+和第一个最小的值作为交换 
+
+```java
+package Chapter_1;
+
+public class Insertion extends Example {
+    @Override
+    public void sort(Comparable[] a) {
+        int N = a.length;
+        for (int i = 0; i < N ; i++) {
+            for (int j = i; j >0 ; j--) {
+                if (less(a[j],a[j-1])){
+                    exch(a,j,j-1);
+                }
+            }
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] a= new Integer[10];
+        for (int i = 9; i>=0 ; i--) {
+            a[i] = i;
+        }
+        new Insertion().sort(a);
+        for (int i:a
+        ) {
+            System.out.println(i);
+        }
+
+    }
+}
+
+```
+* 选择排序
+遍历列表
+把当前元素与之前的元素相比较
+如果之前的元素大于当前元素就交换他俩的位置
+这样能够保证当前元素列表之前的所有元素都是有序的
+然后遍历整个列表就能够试其全部有序
