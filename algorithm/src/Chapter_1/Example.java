@@ -1,6 +1,7 @@
 package Chapter_1;
 
 import algs4.StdOut;
+import algs4.StdRandom;
 
 /**
  * @创建人:xiantang
@@ -32,5 +33,30 @@ public class Example {
         }
         return true;
     }
+    public void toRight(int pre,int la,Comparable[]a){
+        Comparable temp = a[la];
+        for (int i = la; i >pre ; i--) {
+            a[i] =a[i-1];
+        }
+        a[pre]=temp;
 
+
+    }
+
+    public static void main(String[] args) {
+        Double[] a= new Double[10];
+        for (int i = 9; i>=0 ; i--) {
+            a[i] = StdRandom.uniform();
+        }
+        for (int i = 0; i <a.length ; i++) {
+            System.out.println(i );
+            System.out.println(a[i]);
+        }
+        System.out.println("------------");
+        new Example().toRight(1,6,a) ;
+        for (int i = 0; i <a.length ; i++) {
+            System.out.println(i);
+            System.out.println(a[i]);
+        }
+    }
 }

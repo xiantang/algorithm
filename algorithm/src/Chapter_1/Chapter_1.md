@@ -323,3 +323,46 @@ public class Selection extends Example{
 然后不断更新最小的值 
 将循环最后剩下的那个最小的值 
 和第一个最小的值作为交换 QD
+
+
+### 比较两个的时间复杂度
+垃圾的工程代码写的有点多 
+`for`循环都有点生疏了
+```java
+for (int i = 0; i <100 ; i++) {
+            System.out.println(i);
+
+        }
+```
+在for循环中i++是最后执行的 就是当我执行完print的时候
+他才会++
+
+```java
+for (int j = i; j >0&&less(a[j],a[j-1]) ; j--) {
+//                if (less(a[i],a[j-1])){
+                    exch(a,j,j-1);
+                    
+//                }                
+            }
+```
+我们可以知道前面的数值是一定有序的 
+不存在前面由大到小的情况 只要不断前进与比他大的值交换就可以了
+交换元素
+
+
+```java
+
+public void toRight(int pre,int la,Comparable[]a){
+        Comparable temp = a[la];
+        for (int i = la; i >pre ; i--) {
+            a[i] =a[i-1];
+        }
+        a[pre]=temp;
+
+
+    }
+```
+
+改进的 从后面开始遍历 使当前的值等于他之前的值 
+就不会有任何冲突了 woc
+比交换好用一些

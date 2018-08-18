@@ -322,42 +322,47 @@ public class Selection extends Example{
 每次都选择第一个为最小的
 然后不断更新最小的值 
 将循环最后剩下的那个最小的值 
-和第一个最小的值作为交换 
+和第一个最小的值作为交换 QD
+
+
+### 比较两个的时间复杂度
+垃圾的工程代码写的有点多 
+`for`循环都有点生疏了
+```java
+for (int i = 0; i <100 ; i++) {
+            System.out.println(i);
+
+        }
+```
+在for循环中i++是最后执行的 就是当我执行完print的时候
+他才会++
 
 ```java
-package Chapter_1;
-
-public class Insertion extends Example {
-    @Override
-    public void sort(Comparable[] a) {
-        int N = a.length;
-        for (int i = 0; i < N ; i++) {
-            for (int j = i; j >0 ; j--) {
-                if (less(a[j],a[j-1])){
+for (int j = i; j >0&&less(a[j],a[j-1]) ; j--) {
+//                if (less(a[i],a[j-1])){
                     exch(a,j,j-1);
-                }
+                    
+//                }                
             }
-        }
-    }
-
-    public static void main(String[] args) {
-        Integer[] a= new Integer[10];
-        for (int i = 9; i>=0 ; i--) {
-            a[i] = i;
-        }
-        new Insertion().sort(a);
-        for (int i:a
-        ) {
-            System.out.println(i);
-        }
-
-    }
-}
-
 ```
-* 选择排序
-遍历列表
-把当前元素与之前的元素相比较
-如果之前的元素大于当前元素就交换他俩的位置
-这样能够保证当前元素列表之前的所有元素都是有序的
-然后遍历整个列表就能够试其全部有序
+我们可以知道前面的数值是一定有序的 
+不存在前面由大到小的情况 只要不断前进与比他大的值交换就可以了
+交换元素
+
+
+```java
+
+public void toRight(int pre,int la,Comparable[]a){
+        Comparable temp = a[la];
+        for (int i = la; i >pre ; i--) {
+            a[i] =a[i-1];
+        }
+        a[pre]=temp;
+
+
+    }
+```
+
+改进的 从后面开始遍历 使当前的值等于他之前的值 
+就不会有任何冲突了 woc
+比交换好用一些
