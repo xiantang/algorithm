@@ -15,16 +15,6 @@ public class Insertion extends Example {
 
             }
             toRight(j,i,a);
-//            for (; j > 0 && less(a[j], a[j - 1]); j--) {
-////
-//                exch(a, j, j - 1);
-////
-//            }
-
-
-
-//            System.out.println(i);
-//            System.out.println(j-1);
 
         }
     }
