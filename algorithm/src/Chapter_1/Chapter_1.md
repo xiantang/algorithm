@@ -366,3 +366,28 @@ public void toRight(int pre,int la,Comparable[]a){
 改进的 从后面开始遍历 使当前的值等于他之前的值 
 就不会有任何冲突了 woc
 比交换好用一些
+
+```java
+public class Shell extends Example {
+    public  void sort(Comparable [] a){
+        int N = a.length;
+        int h = 1;
+        while (h<N/3) h = 3*h+1;
+        while (h>=1){
+            for (int i = h; i <N; i++) {
+                for (int j = i; j >=h&&less(a[j],a[j-h]) ; j-=h) {
+                    exch(a,j,j-h);
+                }
+                h =h/3;
+            }
+        }
+    }
+}
+```
+希尔排序主要是从宏观上进行排序  
+首先线选择数组长度的乘以一个常数作为h
+然后用h将数组进行分组  
+使用插入排序进行排序 
+然后不断缩小范围   得到的数组会变长 但是会局部有序 
+所以使用插入排序的效率会变高
+最后在n=1的情况下啊进行排序
