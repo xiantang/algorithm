@@ -12,6 +12,7 @@ package Chapter_2;
 
 import Chapter_1.Example;
 
+
 public class Quick3Find extends Example {
     public void sort(Comparable[] a){
         sort(a,0,a.length-1);
