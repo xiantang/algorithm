@@ -12,7 +12,7 @@ public class Quick extends Example {
         }
         int j = partition(a,lo,hi);
         sort(a,lo,j-1);
-        sort(a,lo,j-1);
+        sort(a,j+1,hi);
     }
     public int partition(Comparable[] a,int lo,int hi){
         int i = lo,j=hi+1;
