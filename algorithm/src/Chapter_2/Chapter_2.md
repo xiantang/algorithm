@@ -1,3 +1,125 @@
+### 排序
+
+```java
+package Chapter_1;
+
+/**
+ * @创建人:xiantang
+ * @创建时间:15/08/18
+ * @email:zhujingdi1998@gmail.com
+ * @github:github.com/xiantang
+ * @blog:zhanshengpipidi.cn/blog
+ * @描述:
+ **/
+public class Selection extends Example{
+    @Override
+    public void sort(Comparable[] a) {
+        int N = a.length;
+        for (int i = 0; i <N ; i++) {
+            int min = i;
+            for (int j = i+1; j <N ; j++) {
+                if (less(a[j],a[min])) min = j;
+            }
+            exch(a,i,min);
+        }
+    }
+
+    public static void main(String[] args) {
+        Integer[] a= new Integer[10];
+        for (int i = 0; i <a.length ; i++) {
+            a[i] = i;
+        }
+        new Selection().sort(a);
+        for (int i:a
+             ) {
+            System.out.println(i);
+        }
+    }
+}
+
+```
+* 插入排序
+每次都选择第一个为最小的
+然后不断更新最小的值 
+将循环最后剩下的那个最小的值 
+和第一个最小的值作为交换 QD
+
+
+### 比较两个的时间复杂度
+垃圾的工程代码写的有点多 
+`for`循环都有点生疏了
+```java
+for (int i = 0; i <100 ; i++) {
+            System.out.println(i);
+
+        }
+```
+在for循环中i++是最后执行的 就是当我执行完print的时候
+他才会++
+
+```java
+for (int j = i; j >0&&less(a[j],a[j-1]) ; j--) {
+//                if (less(a[i],a[j-1])){
+                    exch(a,j,j-1);
+                    
+//                }                
+            }
+```
+我们可以知道前面的数值是一定有序的 
+不存在前面由大到小的情况 只要不断前进与比他大的值交换就可以了
+交换元素
+
+
+```java
+
+public void toRight(int pre,int la,Comparable[]a){
+        Comparable temp = a[la];
+        for (int i = la; i >pre ; i--) {
+            a[i] =a[i-1];
+        }
+        a[pre]=temp;
+
+
+    }
+```
+
+改进的 从后面开始遍历 使当前的值等于他之前的值 
+就不会有任何冲突了 woc
+比交换好用一些
+
+```java
+public class Shell extends Example {
+    public  void sort(Comparable [] a){
+        int N = a.length;
+        int h = 1;
+        while (h<N/3) h = 3*h+1;
+        while (h>=1){
+            for (int i = h; i <N; i++) {
+                for (int j = i; j >=h&&less(a[j],a[j-h]) ; j-=h) {
+                    exch(a,j,j-h);
+                }
+                h =h/3;
+            }
+        }
+    }
+}
+```
+希尔排序主要是从宏观上进行排序  
+首先线选择数组长度的乘以一个常数作为h
+然后用h将数组进行分组  
+使用插入排序进行排序 
+然后不断缩小范围   得到的数组会变长 但是会局部有序 
+所以使用插入排序的效率会变高
+最后在n=1的情况下啊进行排序
+
+
+### 归并排序
+归并排序主要是通过将一个数组分成两个数组 将其排序
+使用两个指针来比较两个值的大小  然后将其复制到原来的数组 
+归并排序利用递归的思路实现分治 他首先会将最细小的部分比较完
+实现包括这里两个的数组的 大数组 的两个小数组是有序的 
+然后不断的回溯
+
 ### 快排优化
 * 对于小数组的排序使用插入排序
 * 三取样切分 在重复数目不够多的情况下是使用了
@@ -145,3 +267,19 @@ public class HeapSort extends Example {
 缺点:但是无法利用缓存 与他比较的往往不是附近的元素
 所以 缓存不容易命中
 
+### 应用 
+使用`Comparator`接口可以比较两个属性值的大小
+总结:
+* 希尔排序:复杂度只是一个近似值
+* 插入排序:复杂度取决于属于元素的排列情况
+* 快排:复杂度和概率有关 取决于输入元素的排列情况
+
+算法 | 是否稳定 | 是否原地排序 | 时间复杂度  
+---- | --- | --- | --- 
+插入排序 | 是 |是 | N^2 
+选择排序 | 否 | 是 | N^2 
+希尔排序 | 否 | 是 | NlogN? /N^(6/5)? 
+快速排序 | 否 | 是 | NlogN
+三向快速排序 | 否 | 是 | N-NlogN
+归并排序 | 是 | 否 | NlogN
+堆排序 | 否  | 是 | NlogN
