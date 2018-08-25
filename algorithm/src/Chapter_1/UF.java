@@ -60,4 +60,5 @@ public class UF {
         }
         StdOut.println(uf.count()+"components");
     }
+
 }
