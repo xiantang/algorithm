@@ -380,3 +380,32 @@ System.out.println(i);
 //2
 //2
 ```
+
+### 2.5.18 强制稳定 
+```java
+ private static void toStead(Transaction[] a, Comparator c){
+        Map map = new HashMap();
+        for (int i = 0; i <a.length ; i++) {
+            map.put(a[i],i);
+        }
+        SelectP.sort(a,c);
+
+        for (int i = 0; i<a.length ; i++) {
+            int temp = i;
+            if (temp==0){
+            }
+            else if (a[temp-1].who().equals(a[temp].who()) ){
+                while (a[temp-1].who().equals(a[temp].who())){
+                    if ((int)map.get(a[temp-1])>(int)map.get(a[temp])){
+                        exch(a,temp-1,temp);
+                        temp--;
+                    }else break;
+                }
+            }
+        }
+    }
+```
+使选择排序强制稳定 就是将他的原有顺序存入一个`hashmap`
+然后遍历排序好的数组 不断的取判断他和之前的属性是否相同
+如果相同就查看他俩在`hashmap`的value 如果之前的值比之后的值大
+就交换位置并且不断向前 类似倒序的插入排序 
