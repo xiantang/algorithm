@@ -70,12 +70,5 @@ public class FIndMidNum extends Quick {
         }
     }
 }
-//FIXME:为什么返回前面的比后面的大
-// 懂了:因为a[j] break之后一定比v小一点的
-//        int i=1;
-//        while (++i>5){
-//
-//        }
-//        System.out.println(i);
-        //如果while条件不成立 但是还是会使i加1
+
 
