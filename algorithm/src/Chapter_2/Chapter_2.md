@@ -120,6 +120,47 @@ public class Shell extends Example {
 实现包括这里两个的数组的 大数组 的两个小数组是有序的 
 然后不断的回溯
 
+###切分方法
+```java
+public int partition(Comparable[] a ,int lo, int hi){
+        Comparable v = a[lo]; //v是第一个元素
+        int i = lo;
+        int j = hi+1;
+        while (true){
+            while (less(a[++i],v)){
+
+                if (i>=hi){
+                    break;
+                }
+            }
+            while (less(v,a[--j])){
+
+                if (j<=lo){
+                    break;
+                }
+            }
+
+            if (i>=j){
+                break;
+            }
+            exch(a,i,j);
+        }
+        
+        exch(a,lo,j);
+//        System.out.println(a[j]);
+        return j;
+
+    }
+```
+这个方法挺6的 利用的是原地操作 
+假设第一个值为中间值 
+然后分别从数组的两边进行缩小 如果头部找到比第一个值大的就`break`
+尾部找到比第一个值小的就`break` 然后将这两个`break`的值进行交换 
+而且把++i --j放入while循环中 就不用担心会不会相遇了 因为这样一定相遇 
+然后为什么要选择j与第一个元素相互交换呢 
+因为我们能够得出j所在位置的元素一定会比v小或者相等   
+然后j后面的元素一定是大于v
+
 ### 快排优化
 * 对于小数组的排序使用插入排序
 * 三取样切分 在重复数目不够多的情况下是使用了
@@ -283,3 +324,59 @@ public class HeapSort extends Example {
 三向快速排序 | 否 | 是 | N-NlogN
 归并排序 | 是 | 否 | NlogN
 堆排序 | 否  | 是 | NlogN
+
+
+### 求第几个数 也可以拿来求中位数 
+```java
+package Chapter_2;
+
+import Chapter_1.Example;
+
+public class FIndMidNum extends Quick {
+    public Comparable select(Comparable[] a , int k){
+        /** 
+        * @Description:  
+        * @Param: [a, k] 
+        * @return: java.lang.Comparable 
+        * @Author: Mr.Zhu
+        * @Date: 18-8-26 
+        */ 
+        int lo = 0 , hi = a.length-1;
+        while (hi>lo){
+            int j = partition(a,lo,hi);
+            if (j==k)return a[k];
+            if (j>k) hi = j-1;
+            else lo = j+1;
+            
+        }
+        return a[k];
+    }
+    
+}
+
+```
+理解: 就是随机取数组中的一个值 然后将其作为假设的中位数 
+我们使用`partition()`方法去求这个假设的中卫数在整个数组中是
+第几小的  如果这个j的值和我们要求的k相同就返回他的元素值 
+如果大于k 就将他设为j-1 小于k 可以将它设为j+1 这个二分法的
+一个进阶
+
+### i++,++i的区别 
+如果i=1
+i++ 是当前语句的时候不执行++操作 
+等到执行完这个语句之后才会+1
+```java
+int i = 1;
+System.out.println(i++);
+System.out.println(i)
+//1
+//2
+```
+++i 则是传入的时候就进行++
+```java
+int i = 1;
+System.out.println(++i);
+System.out.println(i);
+//2
+//2
+```
