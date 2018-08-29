@@ -28,8 +28,8 @@ public class SequentialSearchST<Key, Value> {
 
     public void put(Key key, Value val) {
         for (Node x = first; x != null; x = x.next) {
-            if (key.equals(x.key)) x.value = val;
-            return;
+            if (key.equals(x.key)) {x.value = val;
+            return;}
         }
         first = new Node(key, val, first);
     }
@@ -59,9 +59,10 @@ public class SequentialSearchST<Key, Value> {
         sequentialSearchST.put("qq",1);
         sequentialSearchST.put("qqq",1);
         sequentialSearchST.put("qqqa",1);
+        System.out.println(sequentialSearchST.get("qq"));
         sequentialSearchST.delete("qq");
         System.out.println(sequentialSearchST.get("qq"));
         sequentialSearchST.delete("qqqa");
-
+        System.out.println(sequentialSearchST.size());
     }
 }
