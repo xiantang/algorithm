@@ -1,4 +1,4 @@
-package Chapter_2;
+package Chapter_3;
 
 import algs4.ST;
 import algs4.StdIn;
