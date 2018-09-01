@@ -75,4 +75,35 @@ keys()方法获取所有的区间内的元素
 上面的循环是循环不到下面的元素的  
 
 
+ ### 二叉查找树
  
+ 定义:
+ BST是一颗二叉树，其中每个节点都含有一个`Comparable`
+ 键  并且每个节点大于其左子树的任意节点的键
+ 
+ * 就是因为他是二叉查找树 所以他的右子树肯定比左子树大   
+ 我们总是可以把新来的键插到树的叶子上
+ 
+ 
+
+```java
+private Node put(Node x,Key key,Value value){
+        if (root == null) {
+            //如果只有头节点
+            return new Node(key,value,1);
+        }
+        int cmp = key.compareTo(x.key);
+        if (cmp>0) put(x.left,key,value);
+        else if(cmp<0) put(x.right,key,value);
+        else x.value = value ;
+        x.N = size(x.left) +size(x.right)+1;
+        return x;
+        
+    }
+```
+这个`put` 利用了二叉树和递归的完美契合 
+下面我们来解释这个递归:
+基线条件：如果x是null 就不执行自身或者当前节点的`key`和传入参数的`key`相同
+递归条件：`key` 大于或者小于当前节点的`key`
+
+我觉得最巧妙的莫过于这个`x`节点的判断是否为空 woc 简直牛逼   
