@@ -22,8 +22,8 @@ public int rank(Key key){
 ```
 这个实现还是很巧妙的 利用的二分法获得一个节点的位置
 如果这个节点不存在 就返回比这个节点小的节点的数量
-他这个`<=`页很关键 在只剩下一个元素的时候如果这个元素不是目标元素的话
-就使`lo`比`hi`大1
+他这个`<=`页很关键 在只剩下一个元素的时候如果这个  
+元素不是目标元素的话就使`lo`比`hi`大1
 
 ```java
 public void  put(Key key,Value val){
@@ -41,3 +41,36 @@ public void  put(Key key,Value val){
 ```
 如果拿到这个值就给他更新 如果没有就使他之后的元素位移1位
 巧妙
+
+```java
+public boolean isContain(Key key) {
+               /**
+                * 方法实现说明 如果不包含 就返回False
+                * @method      contain
+                * @author      xiantang
+                * @param       [key]
+                * @return      boolean
+                * @date        2018/9/1 21:06
+                */
+               return get(key) != null;
+           }
+ public Iterable<Key> keys(Key lo, Key hi) {
+        Queue<Key> q = new Queue<Key>();
+        for (int i = rank(lo); i < rank(hi); i++) {
+            q.enqueue(keys[i]);
+        }
+        if (isContain(hi)){
+            q.enqueue(keys[rank(hi)]);
+        }
+        return q;
+    }
+
+```
+keys()方法获取所有的区间内的元素
+至于这个`isContain()`方法是用来查看是否存在这个值    
+如果存在就给他`return` `true` 
+如果不存在 那`get`找到的就是`false`    
+那么`return`的就是`false`  
+
+
+ 
