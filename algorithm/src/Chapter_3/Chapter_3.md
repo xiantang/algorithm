@@ -107,3 +107,19 @@ private Node put(Node x,Key key,Value value){
 递归条件：`key` 大于或者小于当前节点的`key`
 
 我觉得最巧妙的莫过于这个`x`节点的判断是否为空 woc 简直牛逼   
+
+
+
+```java
+private Value get(Node x,Key key){
+        if (x ==null)return null;
+        int cmp = key.compareTo(x.key);
+        if (cmp<0)return get(x.left,key);
+        else  if (cmp>0) return get(x.right,key);
+        else return x.value;
+
+    }
+```
+
+基线条件:如果`x`是`null`就`return` 或者如果两个键的值相等就`return`
+递归条件:如果两个大小不同 就执行自己 
