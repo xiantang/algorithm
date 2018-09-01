@@ -7,8 +7,8 @@ public class BST<Key extends Comparable<Key>,Value> {
     private  class  Node{
         Key key;
         Value value;
-        private Node left;
-        private Node right;
+        private Node left = null;
+        private Node right = null;
         private int N;
 
         public Node(Key key, Value value, int n) {
@@ -29,7 +29,7 @@ public class BST<Key extends Comparable<Key>,Value> {
         root = put(root,key,value);
     }
     private Node put(Node x,Key key,Value value){
-        if (root == null) {
+        if (x == null) {
             //如果只有头节点
             return new Node(key,value,1);
         }
@@ -39,9 +39,13 @@ public class BST<Key extends Comparable<Key>,Value> {
         else x.value = value ;
         x.N = size(x.left) +size(x.right)+1;
         return x;
-
     }
 
+    public static void main(String[] args) {
+        BST<String,Integer> bst = new BST<>();
+        bst.put("A",1);
+        bst.put("C",2);
+    }
 
 
 }
