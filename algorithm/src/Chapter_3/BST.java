@@ -1,10 +1,6 @@
 package Chapter_3;
 
-//import org.w3c.dom.Node;
-
 import algs4.Queue;
-
-import javax.xml.soap.Node;
 import java.util.ArrayList;
 
 public class BST<Key extends Comparable<Key>, Value> {
@@ -132,12 +128,25 @@ public class BST<Key extends Comparable<Key>, Value> {
         node.N = size(node.left) + size(node.right) + 1;
         return node;
     }
-
+    private Key min(){
+        return min(root).key;
+    }
     private Node min(Node node) {
         if (node.left == null) {
             return node;
         } else {
             return min(node.left);
+        }
+
+    }
+    private Key max(){
+        return max(root).key;
+    }
+    private Node max(Node node) {
+        if (node.right == null) {
+            return node;
+        } else {
+            return min(node.right);
         }
 
     }
@@ -161,9 +170,9 @@ public class BST<Key extends Comparable<Key>, Value> {
         queue.enqueue(root);
         while (!queue.isEmpty()) {
             int i = 0;
-            int len=queue.size();
+            int len = queue.size();
             ArrayList<Node> list = new ArrayList<Node>();
-            while (i<len) {
+            while (i < len) {
 
                 Node node = queue.dequeue();
                 list.add(node);
@@ -182,16 +191,38 @@ public class BST<Key extends Comparable<Key>, Value> {
         return listAll;
 
     }
-    public  void  println(){
+
+    public void println() {
         ArrayList<ArrayList<Node>> arrayList = printGraph();
-        for (ArrayList<Node> list:arrayList
+        for (ArrayList<Node> list : arrayList
         ) {
-            for (Node ele:list
+            for (Node ele : list
             ) {
-                System.out.print(ele.key+" ");
+                System.out.print(ele.key + " ");
             }
             System.out.println("\n");
         }
+    }
+
+    private Iterable<Key> keys(){
+        return keys(min(),max());
+    }
+
+    private Iterable<Key> keys(Key lo,Key hi){
+        Queue<Key> queue = new Queue<>();
+        keys(root,queue,lo,hi);
+        return queue;
+    }
+
+    private void keys(Node node,Queue<Key> queue,Key lo ,Key hi){
+        if (node ==null)return;
+        int cmpa = lo.compareTo(node.key);
+        int cmpb = hi.compareTo(node.key);
+        if (cmpa<0)keys(node.left,queue,lo,hi);
+        if (cmpa<=0 && cmpb>=0) queue.enqueue(node.key);
+        if (cmpb>0)keys(node.right,queue,lo,hi);
+
+
     }
 
 
@@ -202,7 +233,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         bst.put("G", 3);
         bst.put("D", 1);
         bst.put("A", 1);
-        bst.println();
+//        bst.println();
+        for (Object key:bst.keys("B","D")
+             ) {
+            System.out.println(key);
+        };
 //        bst.print();
 //        bst.deleteMin();
 //        System.out.println(bst.size());

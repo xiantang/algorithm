@@ -219,3 +219,30 @@ private void delete(Key key) {
 
 
 将node两侧的元素的数目更新
+
+
+### 查找范围    
+
+```java
+private Iterable<Key> keys(){
+        return keys(min(),max());
+    }
+
+    private Iterable<Key> keys(Key lo,Key hi){
+        Queue<Key> queue = new Queue<>();
+        keys(root,queue,lo,hi);
+        return queue;
+    }
+
+    private void keys(Node node,Queue<Key> queue,Key lo ,Key hi){
+        if (node ==null)return;
+        int cmpa = lo.compareTo(node.key);
+        int cmpb = hi.compareTo(node.key);
+        if (cmpa<0)keys(node.left,queue,lo,hi);
+        if (cmpa<=0 && cmpb>=0) queue.enqueue(node.key);
+        if (cmpb>0)keys(node.right,queue,lo,hi);
+    }
+```
+递归的查找根节点的左子树（如果左子树节点在范围内）    
+然后查找根节点    
+最后查找右子树
