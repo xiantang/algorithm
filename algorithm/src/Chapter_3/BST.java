@@ -61,63 +61,113 @@ public class BST<Key extends Comparable<Key>, Value> {
     }
 
 
-    private Key select(int k){
-        return select(root,k).key;
+    private Key select(int k) {
+        return select(root, k).key;
     }
 
-    private Node select(Node node,int k){
-        if (node ==null) return null;
+    private Node select(Node node, int k) {
+        if (node == null) return null;
         int t = size(node.left);
-        if (k<t){
-            return select(node.left,k);
+        if (k < t) {
+            return select(node.left, k);
         }
-        if (k>t){
-            return select(node.right,k-t-1);
-        }else return node;
+        if (k > t) {
+            return select(node.right, k - t - 1);
+        } else return node;
     }
-    private void deleteMin(){
+
+    private void deleteMin() {
         root = deleteMin(root);
     }
-    private  Node  deleteMin(Node node){
-        if (node.left == null){
+
+    private Node deleteMin(Node node) {
+        if (node.left == null) {
             return node.right;
-        }
-        else {
+        } else {
             node.left = deleteMin(node.left);
 
-            node.N = size(node.left)+size(node.right)+1;
+            node.N = size(node.left) + size(node.right) + 1;
 
             return node;
         }
     }
 
-    private  void  deleteMax(){
+    private void deleteMax() {
         root = deleteMax(root);
     }
-    private Node deleteMax(Node node){
-        if (node.right == null){
+
+    private Node deleteMax(Node node) {
+        if (node.right == null) {
             return node.left;
-        }
-        else {
+        } else {
             node.right = deleteMax(node.right);
-            node.N = size(node.right)+size(node.left)+1;
+            node.N = size(node.right) + size(node.left) + 1;
             return node;
         }
     }
 
+    private void delete(Key key) {
+        root = delete(root, key);
+    }
+    private Node delete(Node node,Key key){
+        if (node==null)return null;
+        int cmp = key.compareTo(node.key);
+        if (cmp<0) node.left = delete(node.left,key);
+        if (cmp>0) node.right = delete(node.right,key);
+        else {
+            if (node.right == null)return node.left;
+            if (node.left == null) return node.right;
+            Node x=node;
+            node = min(x.left);
+            node.right = deleteMin(x.right);
+            node.left = x.left;
+
+        }
+        node.N = size(node.left)+size(node.right)+1;
+        return node;
+    }    private Node min(Node node){
+        if (node.left==null){
+            return node;
+        }else {
+            return min(node.left);
+        }
+
+    }
+
+
+
+//    private Node delete(Node x, Key key) {
+//        if (x == null) return null;
+//        int cmp = key.compareTo(x.key);
+//        if (cmp < 0) x.left = delete(x.left, key);
+//        if (cmp > 0) x.right = delete(x.right, key);
+//        else {
+//            if (x.right == null) return x.left;
+//            if (x.left == null) return x.right;
+//            Node t = x;
+//            x=min(t.left);
+//            x.right = deleteMin(t.right);
+//            x.left = t.left;
+//        }
+//        x.N = size(x.left)+size(x.right)+1;
+//        return x;
+//    }
 
     public static void main(String[] args) {
         BST<String, Integer> bst = new BST<>();
         bst.put("K", 1);
         bst.put("C", 2);
-        bst.put("G",3);
-        bst.put("D",1);
-        bst.put("A",1);
-        bst.deleteMin();
-        System.out.println(bst.size());
-        bst.deleteMax();
-        System.out.println(bst.size());
-    }
+        bst.put("G", 3);
+        bst.put("D", 1);
+        bst.put("A", 1);
+//        bst.deleteMin();
+//        System.out.println(bst.size());
+//        bst.deleteMax();
+//        System.out.println(bst.size());
+//        System.out.println(bst.min(bst.root).key);;
+        bst.delete("K");
+        System.out.println(bst.get("K")
+        );    }
 
 
 }

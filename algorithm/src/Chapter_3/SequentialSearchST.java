@@ -54,6 +54,7 @@ public class SequentialSearchST<Key, Value> {
         }
     }
 
+
     public static void main(String[] args) {
         SequentialSearchST sequentialSearchST = new SequentialSearchST<String, Integer>();
         sequentialSearchST.put("qq",1);

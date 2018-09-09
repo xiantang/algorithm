@@ -181,4 +181,41 @@ private void deleteMin(){
 基线条件：
 如果该节点的左子树为空就返回他的右子树  
 递归条件:
-该节点的左子树不为空  
+该节点的左子树不为空 
+
+
+### 删除指定节点
+
+```java
+private void delete(Key key) {
+        root = delete(root, key);
+    }
+    private Node delete(Node node,Key key){
+        if (node==null)return null;
+        int cmp = key.compareTo(node.key);
+        if (cmp<0) node.left = delete(node.left,key);
+        if (cmp>0) node.right = delete(node.right,key);
+        else {
+            if (node.right == null)return node.left;
+            if (node.left == null) return node.right;
+            Node x=node;
+            node = min(x.left);
+            node.right = deleteMin(x.right);
+            node.left = x.left;
+           
+        }
+         node.N = size(node.left)+size(node.right)+1;
+        return node;
+    }
+```
+
+基线条件:如果node为空就返回`null`  
+如果找到了需要删除的节点就进行操作  
+获取节点左子树的最小节点    
+通过`deleteMin()`删除节点    
+然后使后继节点继承当前节点     
+
+递归条件:如果没有找到node节点 就不断递归查找    
+
+
+将node两侧的元素的数目更新
