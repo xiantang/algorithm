@@ -106,7 +106,7 @@ private Node put(Node x,Key key,Value value){
 基线条件：如果x是null 就不执行自身或者当前节点的`key`和传入参数的`key`相同
 递归条件：`key` 大于或者小于当前节点的`key`
 
-我觉得最巧妙的莫过于这个`x`节点的判断是否为空 woc 简直牛逼   
+我觉得最巧妙的莫过于这个`x`节点的判断是否为空   
 
 
 
@@ -129,3 +129,56 @@ private Value get(Node x,Key key){
 最好情况：一颗含有N个节点的树是完全平衡的，   
 空节点到叶子节点的距离是`lgn`.
 最差情况：叶子节点到到跟节点为`N`
+
+
+```java
+private Key select(int k){
+        return select(root,k).key;
+    }
+
+    private Node select(Node node,int k){
+        if (node ==null) return null;
+        int t = size(node.left);
+        if (k<t){
+            return select(node.left,t);
+        }
+        if (k>t){
+            return select(node.right,k-t-1);
+        }else return node;
+    }
+```
+二叉搜索树`select()`实现    
+基线条件：  
+1. 当前节点是空就返回`null`    
+如果节点的左边节点数目与k相等就返回这个节点    
+递归条件：如果左边节点数目小于k   
+就说明右边第一个节点一定大于   
+左边节点和当前节点   
+然后k-1-t     
+2. 如果左边节点数目大于k 那么进入左节点查找
+
+
+二叉搜索树`deleteMin()`
+
+```java
+private void deleteMin(){
+        root = deleteMin(root);
+    }
+    private  Node  deleteMin(Node node){
+        if (node.left == null){
+            return node.right;
+        }
+        else {
+            node.left = deleteMin(node.left);
+
+            node.N = size(node.left)+size(node.right)+1;
+
+            return node;
+        }
+    }
+
+```
+基线条件：
+如果该节点的左子树为空就返回他的右子树  
+递归条件:
+该节点的左子树不为空  
