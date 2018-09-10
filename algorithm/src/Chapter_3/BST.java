@@ -1,9 +1,11 @@
 package Chapter_3;
 
 import algs4.Queue;
+import algs4.StdRandom;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;
@@ -78,15 +80,15 @@ public class BST<Key extends Comparable<Key>, Value> {
         ) {
             for (Node ele : list
             ) {
-                 nodeArrayList.add(ele);
+                nodeArrayList.add(ele);
             }
 
         }
         Collections.reverse(nodeArrayList);
-        for (Node ele:nodeArrayList
-             ) {
+        for (Node ele : nodeArrayList
+        ) {
 //            System.out.println(ele.key);
-        ele.N = size(ele.left)+size(ele.right)+1;
+            ele.N = size(ele.left) + size(ele.right) + 1;
         }
 
     }
@@ -279,11 +281,33 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     public static void main(String[] args) {
         BST<String, Integer> bst = new BST<>();
-        bst.put("K", 1);
-        bst.put("C", 2);
-        bst.put("G", 3);
-        bst.put("D", 1);
-        bst.put("A", 1);
+//        bst.put("K", 1);
+//        bst.put("C", 2);
+//        bst.put("G", 3);
+//        bst.put("D", 1);
+//        bst.put("A", 1);
+
+
+        int N = 100;
+        for (int i = 0; i<N ; i++) {
+            Integer a = StdRandom.uniform(10);
+            char c = (char)(StdRandom.uniform(25)+'a');
+            bst.put(c+"",a);
+        }
+
+        for (int i = 0; i <10000 ; i++) {
+            int num  = StdRandom.uniform(N);
+
+            bst.delete(bst.select(num));
+            Integer a = StdRandom.uniform(10);
+            char c = (char)(StdRandom.uniform(25)+'a');
+            bst.put(c+"",a);
+        }
+
+
+
+
+
 //        bst.println();
 //        for (Object key:bst.keys("B","D")
 //             ) {
@@ -291,10 +315,9 @@ public class BST<Key extends Comparable<Key>, Value> {
 //        };
 //        bst.nonRecursivePut("B",1);
 //        System.out.println(bst.get("B"));
-        bst.nonRecursivePut("E",3);;
-        bst.println();
+
 //        bst.deleteMin();
-        System.out.println(bst.size());
+//        System.out.println(bst.size());
 //        bst.deleteMax();
 //        System.out.println(bst.size());
 //        System.out.println(bst.min(bst.root).key);;

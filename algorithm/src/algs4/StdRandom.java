@@ -88,7 +88,7 @@ public final class StdRandom {
 
     /**
      * Sets the seed of the pseudo-random number generator.
-     * This method enables you to produce the same sequence of "random"
+     * This method enables you to produce the samFe sequence of "random"
      * number for each execution of the program.
      * Ordinarily, you should call this method at most once per program.
      *
