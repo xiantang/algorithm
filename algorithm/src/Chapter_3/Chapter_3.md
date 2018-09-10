@@ -254,19 +254,18 @@ private Iterable<Key> keys(){
 插入操作:
 * 向2-节点插入新键：需要进行一次未命中的查找    
 首先把根节点挂在底部 然后将他转化成为一个3-节点就可以了   
-![](https://img-blog.csdn.net/20140517141709609?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuZ195dWxlaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
 
 
 * 向父亲节点为2-节点的3-节点插入新键：也将三节点上挂载上新的节点     
 这次需要将这个4-节点中的mid值 传递给父亲节点   
 和父亲节点作为一个3-节点  
-![](https://img-blog.csdn.net/20140517141807656?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuZ195dWxlaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 * 向父亲节点为3-节点的3-节点插入新键：步骤和上面差不多   
 需要注意的是父亲节点变成了4-节点我们需要做的事    
 是将父亲节点的mid再传送给上面的父亲节点  以此类推 
 直到上面的节点为2-节点 或者是根节点为3-节点为止   
-![](https://img-blog.csdn.net/20140517141942296?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQveWFuZ195dWxlaQ==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
 
 
 * 根节点为4-节点： 需要做的是是将mid提取出来   
