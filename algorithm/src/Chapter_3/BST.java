@@ -1,7 +1,9 @@
 package Chapter_3;
 
 import algs4.Queue;
+
 import java.util.ArrayList;
+import java.util.Collections;
 
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;
@@ -41,6 +43,51 @@ public class BST<Key extends Comparable<Key>, Value> {
         if (cmp < 0) return get(x.left, key);
         else if (cmp > 0) return get(x.right, key);
         else return x.value;
+
+    }
+
+    private Value nonRecursiveGet(Key key) {
+        Node x = root;
+        while (x != null) {
+            int cmp = key.compareTo(x.key);
+            if (cmp < 0) x = x.left;
+            if (cmp > 0) x = x.right;
+            else return x.value;
+        }
+        return null;
+    }
+
+    private void nonRecursivePut(Key key, Value value) {
+        Node x = root;
+        while (x != null) {
+            int cmp = key.compareTo(x.key);
+            if (cmp < 0 && x.left == null) {
+                x.left = new Node(key, value, 1);
+                break;
+            } else if (cmp < 0) x = x.left;
+            else if (cmp > 0 && x.right == null) {
+                x.right = new Node(key, value, 1);
+                break;
+            } else if (cmp > 0) x = x.right;
+
+            else x.value = value;
+        }
+        ArrayList<ArrayList<Node>> arrayList = printGraph();
+        ArrayList<Node> nodeArrayList = new ArrayList<>();
+        for (ArrayList<Node> list : arrayList
+        ) {
+            for (Node ele : list
+            ) {
+                 nodeArrayList.add(ele);
+            }
+
+        }
+        Collections.reverse(nodeArrayList);
+        for (Node ele:nodeArrayList
+             ) {
+//            System.out.println(ele.key);
+        ele.N = size(ele.left)+size(ele.right)+1;
+        }
 
     }
 
@@ -128,9 +175,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         node.N = size(node.left) + size(node.right) + 1;
         return node;
     }
-    private Key min(){
+
+    private Key min() {
         return min(root).key;
     }
+
     private Node min(Node node) {
         if (node.left == null) {
             return node;
@@ -139,9 +188,11 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
 
     }
-    private Key max(){
+
+    private Key max() {
         return max(root).key;
     }
+
     private Node max(Node node) {
         if (node.right == null) {
             return node;
@@ -204,23 +255,23 @@ public class BST<Key extends Comparable<Key>, Value> {
         }
     }
 
-    private Iterable<Key> keys(){
-        return keys(min(),max());
+    private Iterable<Key> keys() {
+        return keys(min(), max());
     }
 
-    private Iterable<Key> keys(Key lo,Key hi){
+    private Iterable<Key> keys(Key lo, Key hi) {
         Queue<Key> queue = new Queue<>();
-        keys(root,queue,lo,hi);
+        keys(root, queue, lo, hi);
         return queue;
     }
 
-    private void keys(Node node,Queue<Key> queue,Key lo ,Key hi){
-        if (node ==null)return;
+    private void keys(Node node, Queue<Key> queue, Key lo, Key hi) {
+        if (node == null) return;
         int cmpa = lo.compareTo(node.key);
         int cmpb = hi.compareTo(node.key);
-        if (cmpa<0)keys(node.left,queue,lo,hi);
-        if (cmpa<=0 && cmpb>=0) queue.enqueue(node.key);
-        if (cmpb>0)keys(node.right,queue,lo,hi);
+        if (cmpa < 0) keys(node.left, queue, lo, hi);
+        if (cmpa <= 0 && cmpb >= 0) queue.enqueue(node.key);
+        if (cmpb > 0) keys(node.right, queue, lo, hi);
 
 
     }
@@ -234,13 +285,16 @@ public class BST<Key extends Comparable<Key>, Value> {
         bst.put("D", 1);
         bst.put("A", 1);
 //        bst.println();
-        for (Object key:bst.keys("B","D")
-             ) {
-            System.out.println(key);
-        };
-//        bst.print();
+//        for (Object key:bst.keys("B","D")
+//             ) {
+//            System.out.println(key);
+//        };
+//        bst.nonRecursivePut("B",1);
+//        System.out.println(bst.get("B"));
+        bst.nonRecursivePut("E",3);;
+        bst.println();
 //        bst.deleteMin();
-//        System.out.println(bst.size());
+        System.out.println(bst.size());
 //        bst.deleteMax();
 //        System.out.println(bst.size());
 //        System.out.println(bst.min(bst.root).key);;
