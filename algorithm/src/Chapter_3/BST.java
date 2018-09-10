@@ -5,7 +5,6 @@ import algs4.StdRandom;
 
 import java.util.ArrayList;
 import java.util.Collections;
-import java.util.Random;
 
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;
@@ -288,21 +287,21 @@ public class BST<Key extends Comparable<Key>, Value> {
 //        bst.put("A", 1);
 
 
-        int N = 100;
-        for (int i = 0; i<N ; i++) {
-            Integer a = StdRandom.uniform(10);
-            char c = (char)(StdRandom.uniform(25)+'a');
-            bst.put(c+"",a);
-        }
-
-        for (int i = 0; i <10000 ; i++) {
-            int num  = StdRandom.uniform(N);
-
-            bst.delete(bst.select(num));
-            Integer a = StdRandom.uniform(10);
-            char c = (char)(StdRandom.uniform(25)+'a');
-            bst.put(c+"",a);
-        }
+//        int N = 100;
+//        for (int i = 0; i<N ; i++) {
+//            Integer a = StdRandom.uniform(10);
+//            char c = (char)(StdRandom.uniform(25)+'a');
+//            bst.put(c+"",a);
+//        }
+//
+//        for (int i = 0; i <10000 ; i++) {
+//            int num  = StdRandom.uniform(N);
+//
+//            bst.delete(bst.select(num));
+//            Integer a = StdRandom.uniform(10);
+//            char c = (char)(StdRandom.uniform(25)+'a');
+//            bst.put(c+"",a);
+//        }
 
 
 
