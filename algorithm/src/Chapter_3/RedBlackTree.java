@@ -43,18 +43,78 @@ public class RedBlackTree<Key extends Comparable<Key>,Value> {
         else root = put(root,key,val);
     }
 
+    private Node rotateLeft(Node h){
+        Node x = h.right;
+        h.right = x.left;
+        x.left = h;
+        x.color = h.color;
+        h.color = RED;
+        x.N = h.N;
+        h.N = size(h.left)+size(h.right)+1;
+        return x;
+    }
+    private Node rotateRight(Node h){
+        Node x= h.left;
+        h.left = x.right;
+        x.right = h;
+        x.color = h.color;
+        h.color = RED;
+        x.N = h.N;
+        h.N = 1+size(h.left)+size(h.right);
+        return x;
+    }
+    private void  filpColors(Node h){
+        h.color = RED;
+        h.left.color = BLACK;
+        h.right.color = BLACK;
+    }
+    public Value get(Key key){
+        return  get(root,key);
+    }
+
+
+    public  Value get(Node x,Key key){
+        if (x == null)return null;
+        int cmp = x.key.compareTo(key);
+        if (cmp>0) return get(x.right,key);
+        else  if (cmp<0) return  get(x.left,key);
+        else return x.value;
+
+    }
+
+//    public void put(Key key,Value val){
+//        root = put(root,key,val);
+//
+//    }
+
     public Node put(Node x , Key key, Value val){
         if (x== null){
-            return new Node(key,val,0,BLACK);
+            return new Node(key,val,0,RED);
         }
         int cmp = key.compareTo(x.key);
         if (cmp>0) x.right = put(x.right,key,val);
         else if (cmp<0) x.left = put(x.left,key,val);
         else x.value = val;
-        if(isRed(x))
-
+        if(isRed(x.left) && isRed(x.right))
+        {
+            //如果两个链接都为红色
+            filpColors(x);
+        }
+        if (isRed(x.right)&&!isRed(x.left)){
+            //如果右链接为红色
+            x=rotateLeft(x);
+        }
+        if (isRed(x.left)&&isRed(x.left.left)){
+            x= rotateRight(x);
+        }
         x.N = size(x.left)+size(x.right)+1;
+        return x;
     }
 
-
+    public static void main(String[] args) {
+        RedBlackTree<String,Integer> redBlackTree= new RedBlackTree<String,Integer>();
+        redBlackTree.put("A",10);
+        redBlackTree.put("B",20);
+        System.out.println(redBlackTree.get("B"));
+    }
 }
