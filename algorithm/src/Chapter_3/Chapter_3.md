@@ -338,3 +338,34 @@ private void  filpColors(Node h){
 ```
 疑问：红黑树中删除最小元素的操作      
 对于moveRedLeft()方法的实现不怎么理解     
+
+
+`put()`实现:
+
+```java
+public Node put(Node x, Key key, Value val) {         
+    if (x == null) {                                  
+        return new Node(key, val, 0, RED);            
+    }                                                 
+    int cmp = key.compareTo(x.key);                   
+    if (cmp > 0) x.right = put(x.right, key, val);    
+    else if (cmp < 0) x.left = put(x.left, key, val); 
+    else x.value = val;                               
+    if (isRed(x.right) && !isRed(x.left)) {           
+        //如果右链接为红色                                    
+        x = rotateLeft(x);                            
+    }                                                 
+    if (isRed(x.left) && isRed(x.left.left)) {        
+        //如果左链接为红色并且左链接的左链接为红色                        
+        x = rotateRight(x);                           
+    }                                                 
+    if (isRed(x.left) && isRed(x.right)) {            
+        //如果两个链接都为红色                                  
+        filpColors(x);                                
+                                                      
+    }                                                 
+    x.N = size(x.left) + size(x.right) + 1;           
+    return x;                                         
+}                                                     
+```
+这个put重点在于回去整理二叉树的时候
