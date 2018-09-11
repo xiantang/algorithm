@@ -277,6 +277,62 @@ private Iterable<Key> keys(){
 所有的路径到根节点的路径都不会变长
 
 
-### 红黑树   
+### 左偏红黑树   
 红链接：两个2-节点链接起来构成的3-节点    
 黑链接：两个2-节点中间的链接  
+
+
+红黑树的旋转：
+
+
+1. 左旋转操作:
+![](http://p99jlm9k5.bkt.clouddn.com/blog/image/1/21.png)
+```java
+private Node rotateLeft(Node h){          
+    Node x = h.right;                     
+    h.right = x.left;                     
+    x.left = h;                           
+    x.color = h.color;                    
+    h.color = RED;                        
+    x.N = h.N;                            
+    h.N = size(h.left)+size(h.right)+1;   
+    return x;                             
+}                                         
+```
+左旋转操作先将`h.left`保存到x中   
+然后将`x.left`作为`h.left`   
+将`x.left`设置为`h`
+保留`h`的颜色到`x`  
+将`h`的颜色设置为红色   
+然后更新`h.N`的节点数目   
+至于为什么先更新`h.N`的节点数目主要因为   
+在之后的操作中会更新`x.N`的节点数目    
+并且因为左侧红黑树是从下往上生长的   
+
+
+2. 右旋转操作:
+![](http://p99jlm9k5.bkt.clouddn.com/blog/image/1/26.png)
+```java
+private Node rotateRight(Node h){       
+    Node x= h.left;                     
+    h.left = x.right;                   
+    x.right = h;                        
+    x.color = h.color;                  
+    h.color = RED;                      
+    x.N = h.N;                          
+    h.N = 1+size(h.left)+size(h.right); 
+    return x;                           
+}                                       
+```
+
+
+3. 左右节点都为红色节点:
+![](https://upload-images.jianshu.io/upload_images/4155986-f44848f707b5fac2.png?imageMogr2/auto-orient/)
+
+```java
+private void  filpColors(Node h){ 
+    h.color = RED;                
+    h.left.color = BLACK;         
+    h.right.color = BLACK;        
+}                                 
+```

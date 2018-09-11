@@ -113,8 +113,9 @@ public class RedBlackTree<Key extends Comparable<Key>,Value> {
 
     public static void main(String[] args) {
         RedBlackTree<String,Integer> redBlackTree= new RedBlackTree<String,Integer>();
-        redBlackTree.put("A",10);
+        redBlackTree.put("E",10);
         redBlackTree.put("B",20);
+        redBlackTree.put("A",30);
         System.out.println(redBlackTree.get("B"));
     }
 }
