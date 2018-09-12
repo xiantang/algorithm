@@ -369,3 +369,39 @@ public Node put(Node x, Key key, Value val) {
 }                                                     
 ```
 这个put重点在于回去整理二叉树的时候
+
+TODO:实现删除操作
+
+### 散列表 
+
+* 除留余数法     
+我们选择大小为素数M的数组，对于任意的正整数k.
+计算k除以M的余数。
+求字符串长度的n为R进制值     
+java 字符串`hashCode()`默认实现    
+```java
+@Contract(pure=ture)public int hashCode() {
+        int h = hash;
+        if (h == 0 && value.length > 0) {
+            char val[] = value;
+
+            for (int i = 0; i < value.length; i++) {
+                h = 31 * h + val[i];
+            }
+            hash = h;
+        }
+        return h;
+    }
+```
+
+加1溢出改变了符号位    
+
+-2147483647      10000000 00000000 00000000 00000001
+-2147483648      10000000 00000000 00000000 00000000
+
+
+* `a.equal(b)`能保证a和b是同一个对象    
+那么两个对象的`hashCode()`肯定相同   
+java约定如果两个对象的`hashCode()`不同   
+那么这两个对象就不同
+
