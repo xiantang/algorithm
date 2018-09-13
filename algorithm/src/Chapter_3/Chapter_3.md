@@ -407,5 +407,17 @@ java约定如果两个对象的`hashCode()`不同
 
 
 ### 拉链法  
+主要是创建一个列表   
+然后列表的每个节点由一个链表组成   
+插入方法:
+如果有个节点插入的话   
+那么这个首先对这个节点的`hashCode()`  
+和`0x7fffffff`进行位运算   
+得到一个肯定0到`214748364`的值    
+然后对他进行`mod`将它散列到一个列表当中   
+插入列表内链表对象的尾部     
 
-
+>& is bitwise. && is logical.     
+>& evaluates both sides of the operation.
+>&& evaluates the left side of the operation, if it's true, it continues and evaluates the right side.   
+>(hash & 0x7FFFFFFF) will result in a positive integer.
