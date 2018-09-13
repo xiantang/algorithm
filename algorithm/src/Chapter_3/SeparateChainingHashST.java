@@ -47,6 +47,12 @@ public class SeparateChainingHashST<Key, Value> {
     }
 
     private void  delete(Key key){
+        if (!contain(key))return;
+        //先进行hash操作
+        int i = hash(key);
+        SequentialSearchST<Key,Value> st1 = this.st[i];
+        st1.delete(key);
+
 
     }
 
@@ -54,7 +60,9 @@ public class SeparateChainingHashST<Key, Value> {
     public static void main(String[] args) {
         SeparateChainingHashST<String,Integer> chainingHashST = new SeparateChainingHashST<String, Integer>();
         chainingHashST.put("DD",1);
-        System.out.println(chainingHashST.get("DD"));
+
         System.out.println(chainingHashST.contain("DF"));
+        chainingHashST.delete("DD");
+        System.out.println(chainingHashST.get("DD"));
     }
 }
