@@ -493,3 +493,25 @@ public class SeparateChainingHashST<Key, Value> {
 
 探测：检查一个数组的位置是否含有被查找的键    
 的操作叫做探测。    
+
+```java
+private void resize(int len) {
+
+        LinearProbingHashST<Key, Value> t;
+        t = new LinearProbingHashST<Key, Value>(len);
+        for (int i = 0; i < this.M; i++) {
+            if (keys[i]!=null){
+                t.put(keys[i],vals[i]);
+            }
+
+        }
+        M = t.M;
+        this.keys =t.keys;
+        this.vals =t.vals;
+    }
+```
+重点需要讲一下这个`resize`将原来的数组为空的   
+插入到新的数组   
+他的实现方式是实例化一个自己    
+然后将它转换为调用自己的`put`方法将元素重新散列   
+就可以保证`get`方法能够使用     妙～
