@@ -42,9 +42,19 @@ public class SeparateChainingHashST<Key, Value> {
 
     }
 
+    private boolean contain(Key key){
+       return get(key)!=null;
+    }
+
+    private void  delete(Key key){
+
+    }
+
+
     public static void main(String[] args) {
         SeparateChainingHashST<String,Integer> chainingHashST = new SeparateChainingHashST<String, Integer>();
         chainingHashST.put("DD",1);
         System.out.println(chainingHashST.get("DD"));
+        System.out.println(chainingHashST.contain("DF"));
     }
 }
