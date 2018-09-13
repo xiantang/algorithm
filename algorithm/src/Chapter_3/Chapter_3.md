@@ -407,6 +407,70 @@ java约定如果两个对象的`hashCode()`不同
 
 
 ### 拉链法  
+
+```java
+package Chapter_3;
+
+public class SeparateChainingHashST<Key, Value> {
+    private int N;
+    private int M;
+    private SequentialSearchST<Key, Value>[] st;
+
+    private SeparateChainingHashST() {
+        this(997);
+    }
+
+    private SeparateChainingHashST(int M) {
+        this.M = M;
+        st = (SequentialSearchST<Key, Value>[]) new SequentialSearchST[M];
+        for (int i = 0; i < st.length; i++) {
+            st[i] = new SequentialSearchST();
+        }
+
+    }
+
+    private int hash(Key key) {
+
+        return (key.hashCode() & 0x7fffffff) % M;
+    }
+
+    private Value get(Key key) {
+        return (Value) st[hash(key)].get(key);
+    }
+
+    private void put(Key key, Value val) {
+        st[hash(key)].put(key, val);
+
+    }
+
+    private boolean contain(Key key) {
+        return get(key) != null;
+    }
+
+    private void delete(Key key) {
+        if (!contain(key)) return;
+        //先进行hash操作
+        int i = hash(key);
+        SequentialSearchST<Key, Value> st1 = this.st[i];
+        st1.delete(key);
+
+
+    }
+
+
+    public static void main(String[] args) {
+        SeparateChainingHashST<String, Integer> chainingHashST = new SeparateChainingHashST<String, Integer>();
+        chainingHashST.put("DD", 1);
+
+        System.out.println(chainingHashST.contain("DF"));
+        chainingHashST.delete("DD");
+        System.out.println(chainingHashST.get("DD"));
+
+//        System.out.println(-214748364& 0x7FFFFFFF);
+    }
+}
+
+```
 主要是创建一个列表   
 然后列表的每个节点由一个链表组成   
 插入方法:
@@ -421,3 +485,11 @@ java约定如果两个对象的`hashCode()`不同
 >& evaluates both sides of the operation.
 >&& evaluates the left side of the operation, if it's true, it continues and evaluates the right side.   
 >(hash & 0x7FFFFFFF) will result in a positive integer.
+
+
+![](https://images0.cnblogs.com/blog/631817/201502/271613146279675.x-png)
+
+### 基于线性探测法的散列表   
+
+探测：检查一个数组的位置是否含有被查找的键    
+的操作叫做探测。    
