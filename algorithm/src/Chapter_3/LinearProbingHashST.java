@@ -32,6 +32,27 @@ public class LinearProbingHashST<Key, Value> {
         this.keys =t.keys;
         this.vals =t.vals;
     }
+    private  void  delete(Key key){
+        if (!contain(key))return;
+        int i = hash(key);
+        while (key.equals(keys[i]))
+        //找到i所在的位置
+            i = (i+1)%M;
+        //设置为`null`
+        keys[i] = null;
+        vals[i] = null;
+        i = (1+i)%M;//向前走一步
+        while (keys[i]!=null){
+            //如果keys[i]!=null
+            Key key1 = keys[i];
+            Value val1 = vals[i];
+
+        }
+
+    }
+    private  boolean  contain(Key key){
+        return get(key)!=null;
+    }
 
     private int hash(Key key) {
 
