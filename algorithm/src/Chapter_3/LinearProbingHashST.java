@@ -35,7 +35,7 @@ public class LinearProbingHashST<Key, Value> {
     private  void  delete(Key key){
         if (!contain(key))return;
         int i = hash(key);
-        while (key.equals(keys[i]))
+        while (!key.equals(keys[i]))
         //找到i所在的位置
             i = (i+1)%M;
         //设置为`null`
@@ -46,8 +46,14 @@ public class LinearProbingHashST<Key, Value> {
             //如果keys[i]!=null
             Key key1 = keys[i];
             Value val1 = vals[i];
-
+            keys[i] = null;
+            vals[i] = null;
+            N--;
+            put(key1,val1);
+            i = (1+i)%M;
         }
+        N--;
+        if (N>0 && N== M/8) resize(M/2);
 
     }
     private  boolean  contain(Key key){
@@ -108,7 +114,8 @@ public class LinearProbingHashST<Key, Value> {
         linearProbingHashST.put("M", 9);
         linearProbingHashST.put("P", 10);
         linearProbingHashST.put("E", 12);
-        System.out.println(linearProbingHashST.get("M"));
+        linearProbingHashST.delete("A");
+        System.out.println(linearProbingHashST.get("A"));
 
     }
 
