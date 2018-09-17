@@ -54,6 +54,9 @@ public class LinearProbingHashST<Key, Value> {
         }
         N--;
         if (N>0 && N== M/8) resize(M/2);
+        for (int j = 0; j <keys.length ; j++) {
+            System.out.println(keys[j]);
+        }
 
     }
     private  boolean  contain(Key key){
@@ -102,10 +105,10 @@ public class LinearProbingHashST<Key, Value> {
     public static void main(String[] args) {
         LinearProbingHashST<String, Integer> linearProbingHashST
                 = new LinearProbingHashST<>();
-        linearProbingHashST.put("S", 0);
+        linearProbingHashST.put("S", 6);
         linearProbingHashST.put("E", 10);
-        linearProbingHashST.put("A", 2);
-        linearProbingHashST.put("R", 3);
+        linearProbingHashST.put("A", 4);
+        linearProbingHashST.put("R", 14);
         linearProbingHashST.put("C", 4);
         linearProbingHashST.put("H", 5);
         linearProbingHashST.put("E", 6);
@@ -114,8 +117,13 @@ public class LinearProbingHashST<Key, Value> {
         linearProbingHashST.put("M", 9);
         linearProbingHashST.put("P", 10);
         linearProbingHashST.put("E", 12);
-        linearProbingHashST.delete("A");
-        System.out.println(linearProbingHashST.get("A"));
+        linearProbingHashST.delete("C");
+        System.out.println(linearProbingHashST.get("P")
+        );
+//        for (:linearProbingHashST.keys
+//             ) {
+//
+//        }
 
     }
 
