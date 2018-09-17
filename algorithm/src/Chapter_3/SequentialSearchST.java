@@ -2,10 +2,13 @@ package Chapter_3;
 
 //import org.w3c.dom.Node;
 
-public class SequentialSearchST<Key, Value> {
-    private Node first;
+import java.util.Iterator;
+import java.util.List;
 
-    private class Node {
+public class SequentialSearchST<Key, Value>{
+    public Node first;
+
+    public class Node {
         Key key;
         Value value;
         Node next;
@@ -53,6 +56,9 @@ public class SequentialSearchST<Key, Value> {
             y = x;
         }
     }
+
+
+
 
 
     public static void main(String[] args) {
