@@ -518,4 +518,27 @@ private void resize(int len) {
 
 
 
-###
+###  SeparateChainingHashST 添加resize()
+
+如果平均的链表长度大于指定的长度     
+就将数组的长度翻倍      
+
+
+```java
+private void resize() {
+//        System.out.println("RESIZE");
+        int newM = M*2;
+        SeparateChainingHashST<Key,Value> separateChainingHashST =
+                new SeparateChainingHashST<Key,Value>(newM);
+        for (int i = 0; i < st.length; i++) {
+            for (SequentialSearchST.Node x = st[i].first; x != null; x = x.next) {
+                separateChainingHashST.put((Key)x.key,(Value)x.value);
+            }
+        }
+        st = separateChainingHashST.st;
+        M = 2*M;
+    }
+```
+首先遍历整个数组以及他的链表元素   
+将它的每个元素都推入 新的数组   
+然后修改当前实例的成员    
