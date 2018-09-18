@@ -14,6 +14,7 @@ public class Transction {
         this.when = when;
         this.amount = amount;
         hash = hashCode();
+
     }
 
     public  int hashCode(){

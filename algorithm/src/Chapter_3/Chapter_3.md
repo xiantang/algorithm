@@ -503,7 +503,6 @@ private void resize(int len) {
             if (keys[i]!=null){
                 t.put(keys[i],vals[i]);
             }
-
         }
         M = t.M;
         this.keys =t.keys;
@@ -542,3 +541,28 @@ private void resize() {
 首先遍历整个数组以及他的链表元素   
 将它的每个元素都推入 新的数组   
 然后修改当前实例的成员    
+
+
+### 应用 
+
+#### 过滤器
+
+```java
+public class DeDup {
+    public static void main(String[] args) {
+        HashSet<String> set;
+        set = new HashSet<String>();
+        while (!StdIn.isEmpty()){
+            String key = StdIn.readString();
+            if (!set.contains(key)){
+                set.add(key);
+                StdOut.print(key+" ");
+            }
+        }
+    }
+}
+```
+如果存在就不输出
+
+
+### 稀疏向量
