@@ -566,3 +566,18 @@ public class DeDup {
 
 
 ### 稀疏向量
+
+```java
+public double dot(double[] that){
+        double sum = 0.0;
+        Queue<Integer> queue  = st.keys();
+        for (int i :queue
+             ) {
+            sum += that[i]*this.get(i);
+        }
+        return sum;
+
+    }
+```
+因为向量都是稀疏的  我们只要将向量在列表的位置和值存在
+符号表   然后和对应的向量的索引位置的相乘就行了    

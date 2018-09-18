@@ -1,5 +1,8 @@
 package Chapter_3;
 
+import algs4.Queue;
+import com.sun.xml.internal.messaging.saaj.packaging.mime.util.QEncoderStream;
+
 public class LinearProbingHashST<Key, Value> {
     private int N;
     private int M = 16;
@@ -16,6 +19,10 @@ public class LinearProbingHashST<Key, Value> {
         this.M = M;
         keys = (Key[]) new Object[M];
         vals = (Value[]) new Object[M];
+    }
+
+    public int size(){
+        return N;
     }
 
     private void resize(int len) {
@@ -59,7 +66,7 @@ public class LinearProbingHashST<Key, Value> {
         }
 
     }
-    private  boolean  contain(Key key){
+    public   boolean  contain(Key key){
         return get(key)!=null;
     }
 
@@ -102,6 +109,16 @@ public class LinearProbingHashST<Key, Value> {
     }
 
 
+    public Queue<Key> keys(){
+        Queue<Key> queue = new Queue<>();
+        for (int i = 0; i <keys.length ; i++) {
+            if (keys[i]!=null){
+                queue.enqueue(keys[i]);
+            }
+        }
+        return queue;
+    }
+
     public static void main(String[] args) {
         LinearProbingHashST<String, Integer> linearProbingHashST
                 = new LinearProbingHashST<>();
@@ -118,8 +135,9 @@ public class LinearProbingHashST<Key, Value> {
         linearProbingHashST.put("P", 10);
         linearProbingHashST.put("E", 12);
         linearProbingHashST.delete("C");
-        System.out.println(linearProbingHashST.get("P")
-        );
+        System.out.println(linearProbingHashST.get("P"));
+
+
 //        for (:linearProbingHashST.keys
 //             ) {
 //

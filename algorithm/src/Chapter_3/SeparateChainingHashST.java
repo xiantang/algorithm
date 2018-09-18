@@ -97,7 +97,7 @@ public class SeparateChainingHashST<Key, Value> {
 //        chainingHashST.delete("DD");
 //        System.out.println(chainingHashST.get("DD"));
 //        System.out.println(chainingHashST.N);
-        System.out.println(chainingHashST.get("BB"));
+
 //        System.out.println(-214748364& 0x7FFFFFFF);
     }
 }
