@@ -5,20 +5,22 @@ import algs4.StdRandom;
 
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Random;
 
 public class BST<Key extends Comparable<Key>, Value> {
     private Node root;
 
     private class Node {
         Key key;
-        Value value;
+        ArrayList<Value> value;
         private Node left = null;
         private Node right = null;
         private int N;
 
         public Node(Key key, Value value, int n) {
             this.key = key;
-            this.value = value;
+            this.value = new ArrayList<Value>();
+            this.value.add(value);
             this.N = n;
         }
 
@@ -43,7 +45,10 @@ public class BST<Key extends Comparable<Key>, Value> {
         int cmp = key.compareTo(x.key);
         if (cmp < 0) return get(x.left, key);
         else if (cmp > 0) return get(x.right, key);
-        else return x.value;
+        else{
+            int s = StdRandom.uniform(x.value.size());
+            return x.value.get(s);
+        }
 
     }
 
@@ -53,7 +58,10 @@ public class BST<Key extends Comparable<Key>, Value> {
             int cmp = key.compareTo(x.key);
             if (cmp < 0) x = x.left;
             if (cmp > 0) x = x.right;
-            else return x.value;
+            else {
+                int  index = StdRandom.uniform(x.value.size()-1);
+                return x.value.get(index);
+            }
         }
         return null;
     }
@@ -71,7 +79,9 @@ public class BST<Key extends Comparable<Key>, Value> {
                 break;
             } else if (cmp > 0) x = x.right;
 
-            else x.value = value;
+            else{
+                x.value.add(value);
+            }
         }
         ArrayList<ArrayList<Node>> arrayList = printGraph();
         ArrayList<Node> nodeArrayList = new ArrayList<>();
@@ -104,7 +114,7 @@ public class BST<Key extends Comparable<Key>, Value> {
         int cmp = key.compareTo(x.key);
         if (cmp < 0) x.left = put(x.left, key, value);
         else if (cmp > 0) x.right = put(x.right, key, value);
-        else x.value = value;
+        else x.value.add(value);
         x.N = size(x.left) + size(x.right) + 1;
         return x;
     }
@@ -280,13 +290,18 @@ public class BST<Key extends Comparable<Key>, Value> {
 
     public static void main(String[] args) {
         BST<String, Integer> bst = new BST<>();
-//        bst.put("K", 1);
-//        bst.put("C", 2);
-//        bst.put("G", 3);
-//        bst.put("D", 1);
-//        bst.put("A", 1);
+        bst.put("K", 1);
+        bst.put("C", 2);
+        bst.put("G", 3);
+        bst.put("D", 1);
+        bst.put("A", 1);
+        bst.put("A", 2);
+        bst.put("A", 3);
+        bst.put("A", 4);
 
-
+        System.out.println(bst.get("A"));
+        bst.delete("A");
+        System.out.println(bst.get("A"));
 //        int N = 100;
 //        for (int i = 0; i<N ; i++) {
 //            Integer a = StdRandom.uniform(10);
