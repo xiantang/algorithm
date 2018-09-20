@@ -3,8 +3,6 @@ package Chapter4;
 import algs4.Bag;
 import algs4.In;
 
-import java.util.Iterator;
-
 public class Graph {
     private final int V;   //顶点数目
     private  int E;   //边的数目

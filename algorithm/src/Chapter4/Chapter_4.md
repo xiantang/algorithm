@@ -28,4 +28,85 @@
 * 使用的空间和V+E成正比。
 * 添加一条边所需要的时间为常数级别。
 * 遍历一个顶点所需要的时间和这个顶点的   
-读书成正比。
+度数成正比。
+
+
+具体实现:
+
+
+```java
+package Chapter4;
+
+import algs4.Bag;
+import algs4.In;
+
+public class Graph {
+    private final int V;   //顶点数目
+    private  int E;   //边的数目
+    private Bag<Integer>[] adj;    //临街表
+    public Graph(int V){
+        this.V = V;
+        this.E = 0;
+        adj = (Bag<Integer>[]) new Bag[V];
+        for (int v = 0; v <V ; v++) {
+            adj[v] = new Bag<Integer>();
+        }
+    }
+    public Graph(In in){
+        this(in.readInt());
+        int E = in.readInt();
+
+        for (int i = 0; i <E ; i++) {
+            int v = in.readInt();
+            int w = in.readInt();
+            addEdge(v,w);
+        }
+    }
+    public int V(){
+        return V;
+    }
+    public int E(){
+        return E;
+    }
+
+
+    public void addEdge(int v,int w){
+        adj[v].add(w);
+        adj[w].add(v);
+        E++;
+    }
+    public Iterable<Integer> adj(int v){
+        return adj[v];
+    }
+
+    @Override
+    public String toString() {
+        String s = V+ " vertices ,"+E +" edges\n";
+        for (int v = 0; v <V ; v++) {
+            s += v+ ":";
+            for (int w:this.adj(v)
+                 ) {
+                s+= w+" ";
+            }
+            s+="\n";
+        }
+        return s;
+    }
+
+    public static void main(String[] args) {
+        In in = new In();
+
+        Graph graph = new Graph(in);
+        System.out.println("OK");
+        System.out.println(graph);
+    }
+}
+
+```
+
+我们构造方法第一个是构造一个长度为`V`的图    
+第二个构造方法是从输入流中读取     
+首先读取临接表的顶点数目   
+然后再读取临接表的边的数目   
+然后再填充每条边以及他的顶点    
+  
