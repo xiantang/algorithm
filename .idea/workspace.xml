@@ -1,7 +1,9 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="8052f54f-bb22-4498-8f4f-ea8692544826" name="Default Changelist" comment="depthFirstSearch">
+    <list default="true" id="8052f54f-bb22-4498-8f4f-ea8692544826" name="Default Changelist" comment="">
+      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" afterDir="false" />
     </list>
@@ -36,49 +38,51 @@
           <entry key="project.open.time.2" value="1" />
           <entry key="project.open.time.46" value="1" />
           <entry key="project.open.time.57" value="1" />
+          <entry key="project.open.time.69" value="1" />
           <entry key="project.open.time.71" value="1" />
           <entry key="project.open.time.77" value="2" />
           <entry key="project.open.time.86" value="1" />
           <entry key="project.open.time.9" value="1" />
-          <entry key="project.opened" value="14" />
+          <entry key="project.opened" value="15" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.open">
         <counts>
-          <entry key="java" value="65" />
+          <entry key="java" value="70" />
           <entry key="md" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
-          <entry key="JAVA" value="65" />
+          <entry key="JAVA" value="70" />
           <entry key="Markdown" value="9" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
-          <entry key="java" value="16697" />
-          <entry key="md" value="3225" />
-          <entry key="txt" value="617" />
+          <entry key="dummy" value="12" />
+          <entry key="java" value="17660" />
+          <entry key="md" value="3398" />
+          <entry key="txt" value="637" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="16698" />
-          <entry key="Markdown" value="3224" />
-          <entry key="PLAIN_TEXT" value="617" />
+          <entry key="JAVA" value="17661" />
+          <entry key="Markdown" value="3397" />
+          <entry key="PLAIN_TEXT" value="649" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.40802675">
+    <splitter split-orientation="horizontal" split-proportion="0.7644684">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/LinearProbingHashST.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="551">
+                <state relative-caret-position="126">
                   <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
                 </state>
               </provider>
@@ -87,8 +91,44 @@
           <file pinned="false" current-in-tab="false">
             <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Graph.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="950">
-                  <caret line="57" selection-start-line="57" selection-end-line="57" />
+                <state relative-caret-position="196">
+                  <caret line="28" selection-start-line="28" selection-end-line="28" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#657#658#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/DepthFirstSearch.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="266">
+                  <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/DFPathTo.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="207">
+                  <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+                  <folding>
+                    <element signature="imports" expanded="true" />
+                    <element signature="e#575#576#0" expanded="true" />
+                    <element signature="e#605#606#0" expanded="true" />
+                  </folding>
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="true">
+            <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java">
+              <provider selected="true" editor-type-id="text-editor">
+                <state relative-caret-position="109">
+                  <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
                   <folding>
                     <element signature="imports" expanded="true" />
                   </folding>
@@ -96,20 +136,24 @@
               </provider>
             </entry>
           </file>
-          <file pinned="false" current-in-tab="true">
-            <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/DepthFirstSearch.java">
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter1/Stack.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="456">
-                  <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+                <state relative-caret-position="176">
+                  <caret line="38" selection-start-line="38" selection-end-line="38" />
                 </state>
               </provider>
             </entry>
           </file>
           <file pinned="false" current-in-tab="false">
-            <entry file="file://$PROJECT_DIR$/algorithm/src/algs4/Bag.java">
+            <entry file="file://$PROJECT_DIR$/algorithm/src/algs4/Queue.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="665">
-                  <caret line="63" selection-start-line="63" selection-end-line="63" />
+                <state relative-caret-position="226">
+                  <caret line="103" selection-start-line="103" selection-end-line="103" />
+                  <folding>
+                    <element signature="e#2301#2302#0" expanded="true" />
+                    <element signature="e#2337#2338#0" expanded="true" />
+                  </folding>
                 </state>
               </provider>
             </entry>
@@ -149,8 +193,20 @@
             <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="474">
-                    <caret line="139" column="9" lean-forward="true" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+                  <first_editor relative-caret-position="390">
+                    <caret line="160" selection-start-line="160" selection-end-line="160" />
+                    <folding>
+                      <element signature="e#630#631#0" expanded="true" />
+                      <element signature="e#654#655#0" expanded="true" />
+                      <element signature="e#674#675#0" expanded="true" />
+                      <element signature="e#698#699#0" expanded="true" />
+                      <element signature="e#842#843#0" expanded="true" />
+                      <element signature="e#871#872#0" expanded="true" />
+                      <element signature="e#257#258#0" expanded="true" />
+                      <element signature="e#289#290#0" expanded="true" />
+                      <element signature="e#490#491#0" expanded="true" />
+                      <element signature="e#518#519#0" expanded="true" />
+                    </folding>
                   </first_editor>
                   <second_editor />
                 </state>
@@ -206,9 +262,12 @@
         <option value="$PROJECT_DIR$/algorithm/src/Chapter_3/DoubleLinearProbingHashST.java" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter_3/BST.java" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter3/BST.java" />
-        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Graph.java" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Search.java" />
+        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Graph.java" />
+        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/PathTo.java" />
+        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/DFPathTo.java" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" />
+        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java" />
       </list>
     </option>
   </component>
@@ -230,9 +289,6 @@
       <foldersAlwaysOnTop value="true" />
     </navigator>
     <panes>
-      <pane id="Scope" />
-      <pane id="PackagesPane" />
-      <pane id="AndroidView" />
       <pane id="ProjectPane">
         <subPane>
           <expand>
@@ -255,12 +311,15 @@
           <select />
         </subPane>
       </pane>
+      <pane id="AndroidView" />
+      <pane id="PackagesPane" />
+      <pane id="Scope" />
     </panes>
   </component>
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537450772271" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537596850652" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -275,13 +334,26 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Application.DepthFirstSearch">
-    <configuration name="BST" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chapter3.BST" />
+  <component name="RunManager" selected="Application.BreadFirstPath">
+    <configuration name="BreadFirstPath" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chapter4.BreadFirstPath" />
       <module name="algorithm" />
       <extension name="coverage">
         <pattern>
-          <option name="PATTERN" value="Chapter3.*" />
+          <option name="PATTERN" value="Chapter4.*" />
+          <option name="ENABLED" value="true" />
+        </pattern>
+      </extension>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <configuration name="DFPathTo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chapter4.DFPathTo" />
+      <module name="algorithm" />
+      <extension name="coverage">
+        <pattern>
+          <option name="PATTERN" value="Chapter4.*" />
           <option name="ENABLED" value="true" />
         </pattern>
       </extension>
@@ -302,8 +374,8 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="Graph" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chapter4.Graph" />
+    <configuration name="PathTo" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+      <option name="MAIN_CLASS_NAME" value="Chapter4.PathTo" />
       <module name="algorithm" />
       <extension name="coverage">
         <pattern>
@@ -328,33 +400,20 @@
         <option name="Make" enabled="true" />
       </method>
     </configuration>
-    <configuration name="SparseVector" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
-      <option name="MAIN_CLASS_NAME" value="Chapter3.SparseVector" />
-      <module name="algorithm" />
-      <extension name="coverage">
-        <pattern>
-          <option name="PATTERN" value="Chapter3.*" />
-          <option name="ENABLED" value="true" />
-        </pattern>
-      </extension>
-      <method v="2">
-        <option name="Make" enabled="true" />
-      </method>
-    </configuration>
     <list>
-      <item itemvalue="Application.SparseVector" />
-      <item itemvalue="Application.BST" />
-      <item itemvalue="Application.Graph" />
       <item itemvalue="Application.Search" />
       <item itemvalue="Application.DepthFirstSearch" />
+      <item itemvalue="Application.PathTo" />
+      <item itemvalue="Application.DFPathTo" />
+      <item itemvalue="Application.BreadFirstPath" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Application.BreadFirstPath" />
+        <item itemvalue="Application.DFPathTo" />
+        <item itemvalue="Application.PathTo" />
         <item itemvalue="Application.DepthFirstSearch" />
         <item itemvalue="Application.Search" />
-        <item itemvalue="Application.Graph" />
-        <item itemvalue="Application.BST" />
-        <item itemvalue="Application.SparseVector" />
       </list>
     </recent_temporary>
   </component>
@@ -381,6 +440,7 @@
       <workItem from="1537442983391" duration="6816000" />
       <workItem from="1537487464634" duration="5000" />
       <workItem from="1537521015527" duration="2125000" />
+      <workItem from="1537582038081" duration="6604000" />
     </task>
     <task id="LOCAL-00001" summary="add bst delete">
       <created>1536489781973</created>
@@ -648,17 +708,31 @@
       <option name="project" value="LOCAL" />
       <updated>1537448764859</updated>
     </task>
-    <option name="localTasksCounter" value="39" />
+    <task id="LOCAL-00039" summary="markdown">
+      <created>1537583438923</created>
+      <option name="number" value="00039" />
+      <option name="presentableId" value="LOCAL-00039" />
+      <option name="project" value="LOCAL" />
+      <updated>1537583438923</updated>
+    </task>
+    <task id="LOCAL-00040" summary="DFPathTo">
+      <created>1537586062949</created>
+      <option name="number" value="00040" />
+      <option name="presentableId" value="LOCAL-00040" />
+      <option name="project" value="LOCAL" />
+      <updated>1537586062949</updated>
+    </task>
+    <option name="localTasksCounter" value="41" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="112487000" />
+    <option name="totallyTimeSpent" value="119091000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="23" width="1870" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18544857" />
+      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18708971" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -667,8 +741,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3299435" />
-      <window_info anchor="bottom" id="Debug" order="3" weight="0.3740113" />
+      <window_info anchor="bottom" id="Run" order="2" weight="0.3299435" />
+      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3740113" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -736,8 +810,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add red-black tree to Chapter3.md" />
-    <MESSAGE value="add deleteMin" />
     <MESSAGE value="add deleteMin mkdown" />
     <MESSAGE value="add put()" />
     <MESSAGE value="add HashTable" />
@@ -761,7 +833,9 @@
     <MESSAGE value="图实现" />
     <MESSAGE value="图实现 markdown" />
     <MESSAGE value="depthFirstSearch" />
-    <option name="LAST_COMMIT_MESSAGE" value="depthFirstSearch" />
+    <MESSAGE value="markdown" />
+    <MESSAGE value="DFPathTo" />
+    <option name="LAST_COMMIT_MESSAGE" value="DFPathTo" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -801,6 +875,24 @@
           <line>292</line>
           <properties />
           <option name="timeStamp" value="44" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/algorithm/src/Chapter4/DFPathTo.java</url>
+          <line>53</line>
+          <properties />
+          <option name="timeStamp" value="46" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/algorithm/src/Chapter4/DFPathTo.java</url>
+          <line>54</line>
+          <properties />
+          <option name="timeStamp" value="47" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java</url>
+          <line>41</line>
+          <properties />
+          <option name="timeStamp" value="51" />
         </line-breakpoint>
       </breakpoints>
     </breakpoint-manager>
@@ -911,20 +1003,10 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/WhiteFilter.java" />
     <entry file="file://$PROJECT_DIR$/algorithm/src/LookupCSV.java" />
-    <entry file="file://$PROJECT_DIR$/algorithm/src/algs4/Queue.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-955">
-          <caret line="41" column="13" selection-start-line="41" selection-start-column="13" selection-end-line="41" selection-end-column="13" />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/Transction.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="456">
           <caret line="24" column="20" lean-forward="true" selection-start-line="24" selection-start-column="20" selection-end-line="24" selection-end-column="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -932,9 +1014,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="380">
           <caret line="20" lean-forward="true" selection-start-line="20" selection-end-line="20" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -965,9 +1044,6 @@
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="114">
           <caret line="6" column="13" selection-start-line="6" selection-start-column="13" selection-end-line="6" selection-end-column="13" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
         </state>
       </provider>
     </entry>
@@ -1015,23 +1091,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/LinearProbingHashST.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="551">
-          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
-        </state>
-      </provider>
-    </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Graph.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="950">
-          <caret line="57" selection-start-line="57" selection-end-line="57" />
-          <folding>
-            <element signature="imports" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/algs4/Bag.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="665">
@@ -1062,18 +1121,88 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/DepthFirstSearch.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="456">
-          <caret line="28" lean-forward="true" selection-start-line="28" selection-end-line="28" />
+        <state relative-caret-position="266">
+          <caret line="16" column="35" lean-forward="true" selection-start-line="16" selection-start-column="35" selection-end-line="16" selection-end-column="35" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/DFPathTo.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="207">
+          <caret line="35" column="48" lean-forward="true" selection-start-line="35" selection-start-column="48" selection-end-line="35" selection-end-column="48" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#575#576#0" expanded="true" />
+            <element signature="e#605#606#0" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md">
       <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
         <state split_layout="SPLIT">
-          <first_editor relative-caret-position="474">
-            <caret line="139" column="9" lean-forward="true" selection-start-line="139" selection-start-column="9" selection-end-line="139" selection-end-column="9" />
+          <first_editor relative-caret-position="390">
+            <caret line="160" selection-start-line="160" selection-end-line="160" />
+            <folding>
+              <element signature="e#630#631#0" expanded="true" />
+              <element signature="e#654#655#0" expanded="true" />
+              <element signature="e#674#675#0" expanded="true" />
+              <element signature="e#698#699#0" expanded="true" />
+              <element signature="e#842#843#0" expanded="true" />
+              <element signature="e#871#872#0" expanded="true" />
+              <element signature="e#257#258#0" expanded="true" />
+              <element signature="e#289#290#0" expanded="true" />
+              <element signature="e#490#491#0" expanded="true" />
+              <element signature="e#518#519#0" expanded="true" />
+            </folding>
           </first_editor>
           <second_editor />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/LinearProbingHashST.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="126">
+          <caret line="31" column="31" selection-start-line="31" selection-start-column="31" selection-end-line="31" selection-end-column="31" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Graph.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="196">
+          <caret line="28" selection-start-line="28" selection-end-line="28" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#657#658#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/algs4/Queue.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="226">
+          <caret line="103" selection-start-line="103" selection-end-line="103" />
+          <folding>
+            <element signature="e#2301#2302#0" expanded="true" />
+            <element signature="e#2337#2338#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter1/Stack.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="176">
+          <caret line="38" selection-start-line="38" selection-end-line="38" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="109">
+          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+          <folding>
+            <element signature="imports" expanded="true" />
+          </folding>
         </state>
       </provider>
     </entry>
