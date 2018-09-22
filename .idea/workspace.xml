@@ -2,8 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="8052f54f-bb22-4498-8f4f-ea8692544826" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" beforeDir="false" afterPath="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" afterDir="false" />
     </list>
@@ -49,34 +47,34 @@
       <usages-collector id="statistics.file.extensions.open">
         <counts>
           <entry key="java" value="70" />
-          <entry key="md" value="9" />
+          <entry key="md" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.open">
         <counts>
           <entry key="JAVA" value="70" />
-          <entry key="Markdown" value="9" />
+          <entry key="Markdown" value="10" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.extensions.edit">
         <counts>
           <entry key="dummy" value="12" />
-          <entry key="java" value="17660" />
-          <entry key="md" value="3398" />
-          <entry key="txt" value="637" />
+          <entry key="java" value="17713" />
+          <entry key="md" value="3676" />
+          <entry key="txt" value="655" />
         </counts>
       </usages-collector>
       <usages-collector id="statistics.file.types.edit">
         <counts>
-          <entry key="JAVA" value="17661" />
-          <entry key="Markdown" value="3397" />
-          <entry key="PLAIN_TEXT" value="649" />
+          <entry key="JAVA" value="17714" />
+          <entry key="Markdown" value="3675" />
+          <entry key="PLAIN_TEXT" value="667" />
         </counts>
       </usages-collector>
     </session>
   </component>
   <component name="FileEditorManager">
-    <splitter split-orientation="horizontal" split-proportion="0.7644684">
+    <splitter split-orientation="horizontal" split-proportion="0.45558545">
       <split-first>
         <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
           <file pinned="false" current-in-tab="false">
@@ -127,10 +125,12 @@
           <file pinned="false" current-in-tab="true">
             <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java">
               <provider selected="true" editor-type-id="text-editor">
-                <state relative-caret-position="109">
-                  <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+                <state relative-caret-position="1136">
+                  <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
                   <folding>
                     <element signature="imports" expanded="true" />
+                    <element signature="e#881#882#0" expanded="true" />
+                    <element signature="e#912#913#0" expanded="true" />
                   </folding>
                 </state>
               </provider>
@@ -193,8 +193,8 @@
             <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md">
               <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
                 <state split_layout="SPLIT">
-                  <first_editor relative-caret-position="390">
-                    <caret line="160" selection-start-line="160" selection-end-line="160" />
+                  <first_editor relative-caret-position="486">
+                    <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
                     <folding>
                       <element signature="e#630#631#0" expanded="true" />
                       <element signature="e#654#655#0" expanded="true" />
@@ -206,7 +206,22 @@
                       <element signature="e#289#290#0" expanded="true" />
                       <element signature="e#490#491#0" expanded="true" />
                       <element signature="e#518#519#0" expanded="true" />
+                      <element signature="imports" expanded="true" />
+                      <element signature="e#875#876#0" expanded="true" />
+                      <element signature="e#907#908#0" expanded="true" />
                     </folding>
+                  </first_editor>
+                  <second_editor />
+                </state>
+              </provider>
+            </entry>
+          </file>
+          <file pinned="false" current-in-tab="false">
+            <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/Chapter_3.md">
+              <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+                <state split_layout="SPLIT">
+                  <first_editor relative-caret-position="410">
+                    <caret line="579" column="5" lean-forward="true" selection-start-line="579" selection-start-column="5" selection-end-line="579" selection-end-column="5" />
                   </first_editor>
                   <second_editor />
                 </state>
@@ -266,8 +281,8 @@
         <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Graph.java" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter4/PathTo.java" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter4/DFPathTo.java" />
-        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" />
         <option value="$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java" />
+        <option value="$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md" />
       </list>
     </option>
   </component>
@@ -305,6 +320,12 @@
               <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
               <item name="algorithm" type="462c0819:PsiDirectoryNode" />
               <item name="src" type="462c0819:PsiDirectoryNode" />
+              <item name="Chapter3" type="462c0819:PsiDirectoryNode" />
+            </path>
+            <path>
+              <item name="algorithm" type="b2602c69:ProjectViewProjectNode" />
+              <item name="algorithm" type="462c0819:PsiDirectoryNode" />
+              <item name="src" type="462c0819:PsiDirectoryNode" />
               <item name="Chapter4" type="462c0819:PsiDirectoryNode" />
             </path>
           </expand>
@@ -319,7 +340,7 @@
   <component name="PropertiesComponent">
     <property name="WebServerToolWindowFactoryState" value="false" />
     <property name="aspect.path.notification.shown" value="true" />
-    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537596850652" />
+    <property name="com.android.tools.idea.instantapp.provision.ProvisionBeforeRunTaskProvider.myTimeStamp" value="1537611645087" />
     <property name="settings.editor.selected.configurable" value="editor.preferences.fonts.default" />
   </component>
   <component name="RunDashboard">
@@ -440,7 +461,7 @@
       <workItem from="1537442983391" duration="6816000" />
       <workItem from="1537487464634" duration="5000" />
       <workItem from="1537521015527" duration="2125000" />
-      <workItem from="1537582038081" duration="6604000" />
+      <workItem from="1537582038081" duration="9199000" />
     </task>
     <task id="LOCAL-00001" summary="add bst delete">
       <created>1536489781973</created>
@@ -722,17 +743,24 @@
       <option name="project" value="LOCAL" />
       <updated>1537586062949</updated>
     </task>
-    <option name="localTasksCounter" value="41" />
+    <task id="LOCAL-00041" summary="BreadthFirstPath">
+      <created>1537596953308</created>
+      <option name="number" value="00041" />
+      <option name="presentableId" value="LOCAL-00041" />
+      <option name="project" value="LOCAL" />
+      <updated>1537596953308</updated>
+    </task>
+    <option name="localTasksCounter" value="42" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
-    <option name="totallyTimeSpent" value="119091000" />
+    <option name="totallyTimeSpent" value="121686000" />
   </component>
   <component name="ToolWindowManager">
     <frame x="5" y="23" width="1870" height="977" extended-state="0" />
     <editor active="true" />
     <layout>
-      <window_info content_ui="combo" id="Project" order="0" visible="true" weight="0.18708971" />
+      <window_info active="true" content_ui="combo" id="Project" order="0" visible="true" weight="0.18708971" />
       <window_info id="Structure" order="1" side_tool="true" weight="0.25" />
       <window_info id="Image Layers" order="2" />
       <window_info id="Designer" order="3" />
@@ -741,8 +769,8 @@
       <window_info id="Favorites" order="6" side_tool="true" />
       <window_info anchor="bottom" id="Message" order="0" />
       <window_info anchor="bottom" id="Find" order="1" />
-      <window_info anchor="bottom" id="Run" order="2" weight="0.3299435" />
-      <window_info active="true" anchor="bottom" id="Debug" order="3" visible="true" weight="0.3740113" />
+      <window_info anchor="bottom" id="Run" order="2" visible="true" weight="0.3299435" />
+      <window_info anchor="bottom" id="Debug" order="3" weight="0.3740113" />
       <window_info anchor="bottom" id="Cvs" order="4" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="5" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="6" />
@@ -810,7 +838,6 @@
     <option name="myLimit" value="2678400000" />
   </component>
   <component name="VcsManagerConfiguration">
-    <MESSAGE value="add deleteMin mkdown" />
     <MESSAGE value="add put()" />
     <MESSAGE value="add HashTable" />
     <MESSAGE value="SeparateChainingHashST" />
@@ -835,7 +862,8 @@
     <MESSAGE value="depthFirstSearch" />
     <MESSAGE value="markdown" />
     <MESSAGE value="DFPathTo" />
-    <option name="LAST_COMMIT_MESSAGE" value="DFPathTo" />
+    <MESSAGE value="BreadthFirstPath" />
+    <option name="LAST_COMMIT_MESSAGE" value="BreadthFirstPath" />
   </component>
   <component name="XDebuggerManager">
     <breakpoint-manager>
@@ -890,7 +918,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java</url>
-          <line>41</line>
+          <line>46</line>
           <properties />
           <option name="timeStamp" value="51" />
         </line-breakpoint>
@@ -1054,16 +1082,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/Chapter_3.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="183">
-            <caret line="83" column="15" selection-start-line="83" selection-start-column="15" selection-end-line="83" selection-end-column="15" />
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="jar:///Library/Java/JavaVirtualMachines/jdk1.8.0_151.jdk/Contents/Home/src.zip!/java/util/Random.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="275">
@@ -1138,28 +1156,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md">
-      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
-        <state split_layout="SPLIT">
-          <first_editor relative-caret-position="390">
-            <caret line="160" selection-start-line="160" selection-end-line="160" />
-            <folding>
-              <element signature="e#630#631#0" expanded="true" />
-              <element signature="e#654#655#0" expanded="true" />
-              <element signature="e#674#675#0" expanded="true" />
-              <element signature="e#698#699#0" expanded="true" />
-              <element signature="e#842#843#0" expanded="true" />
-              <element signature="e#871#872#0" expanded="true" />
-              <element signature="e#257#258#0" expanded="true" />
-              <element signature="e#289#290#0" expanded="true" />
-              <element signature="e#490#491#0" expanded="true" />
-              <element signature="e#518#519#0" expanded="true" />
-            </folding>
-          </first_editor>
-          <second_editor />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/LinearProbingHashST.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="126">
@@ -1196,13 +1192,50 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter3/Chapter_3.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="410">
+            <caret line="579" column="5" lean-forward="true" selection-start-line="579" selection-start-column="5" selection-end-line="579" selection-end-column="5" />
+          </first_editor>
+          <second_editor />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/BreadFirstPath.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="109">
-          <caret line="40" lean-forward="true" selection-start-line="40" selection-end-line="40" />
+        <state relative-caret-position="1136">
+          <caret line="60" column="9" lean-forward="true" selection-start-line="60" selection-start-column="9" selection-end-line="60" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
+            <element signature="e#881#882#0" expanded="true" />
+            <element signature="e#912#913#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/algorithm/src/Chapter4/Chapter_4.md">
+      <provider selected="true" editor-type-id="split-provider[text-editor;markdown-preview-editor]">
+        <state split_layout="SPLIT">
+          <first_editor relative-caret-position="486">
+            <caret line="241" lean-forward="true" selection-start-line="241" selection-end-line="241" />
+            <folding>
+              <element signature="e#630#631#0" expanded="true" />
+              <element signature="e#654#655#0" expanded="true" />
+              <element signature="e#674#675#0" expanded="true" />
+              <element signature="e#698#699#0" expanded="true" />
+              <element signature="e#842#843#0" expanded="true" />
+              <element signature="e#871#872#0" expanded="true" />
+              <element signature="e#257#258#0" expanded="true" />
+              <element signature="e#289#290#0" expanded="true" />
+              <element signature="e#490#491#0" expanded="true" />
+              <element signature="e#518#519#0" expanded="true" />
+              <element signature="imports" expanded="true" />
+              <element signature="e#875#876#0" expanded="true" />
+              <element signature="e#907#908#0" expanded="true" />
+            </folding>
+          </first_editor>
+          <second_editor />
         </state>
       </provider>
     </entry>
