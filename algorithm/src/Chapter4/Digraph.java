@@ -50,5 +50,18 @@ public class Digraph {
         }
         return digraph;
     }
+    @Override
+    public String toString() {
+        String s = V+ " vertices ,"+E +" edges\n";
+        for (int v = 0; v <V ; v++) {
+            s += v+ ":";
+            for (int w:this.adj(v)
+            ) {
+                s+= w+" ";
+            }
+            s+="\n";
+        }
+        return s;
+    }
 
 }
