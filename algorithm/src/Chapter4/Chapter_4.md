@@ -253,3 +253,45 @@ public class BreadFirstPath {
 DirectedDFS的有向图可达性算法来标记所有   
 可以被访问对象，然后清理所有对象，回收没有  
 被标记的对象，腾出内存供给新的对象使用。  
+
+ 有向无环图（DAG）：就是一副不带有向环的有向图
+ 
+ 
+### 有向图是否有环     
+ 
+核心方法
+
+```java
+public void dfs(Digraph G,int v){
+        marked[v] = true;
+        onStack[v] = true;
+        for (int w:G.adj(v)
+             ) {
+            if(hasCycle){
+                return;
+            }
+            else if (!marked[w]){
+                edgeTo[w] = v;
+                dfs(G,w);
+            }
+            else if (onStack[w]){
+                cycle = new Stack<Integer>();
+                for (int x = v; x !=w ; x=edgeTo[x]) {
+                    cycle.push(x);
+                }
+                cycle.push(w);
+                cycle.push(v);
+                hasCycle = true;
+            }
+        }
+        onStack[v] = false;
+    }
+```
+
+从v-w是一条路径其中有很多节点   
+到达w节点时v节点还在栈中  
+但是在v的下一个节点  是w   
+这就是一个环了，所以我们判断的方式可以是   
+如果一个节点在栈中，但是当前节点的下个节点
+就是在栈中的这个节点，那么就形成了一个环    
+

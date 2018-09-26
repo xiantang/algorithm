@@ -3,7 +3,7 @@ package Chapter4;
 import algs4.Bag;
 
 public class Digraph {
-    private  final int V;
+    private final int V;
     private int E;
     private Bag<Integer>[] adj;
 
