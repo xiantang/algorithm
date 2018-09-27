@@ -350,3 +350,56 @@ public class Topological {
 2. 对称性:如果`v`和`w`是强连通的，那么`w`和`v`也是强连通的     
 3. 传递性:如果`v`和`w`是强连通且`v`和`x`是强连通的   
 那么`v`和`x`也是强连通的
+
+强连通分量: 强连通性将所有顶点分为了一些等价类    
+每个的等价类是由相互均为强连通分量的顶点最大自集合组成    
+
+一个含有1-V个的有向图含有1-V个强连通分量   
+一个强连通图只有一个强连通分量   
+
+
+### Kosaraju算法
+
+```java
+public class KosarjuSCC {
+    private boolean[] marked;
+    private int[] id;
+    private int count;
+
+    public KosarjuSCC(Digraph G) {
+        marked = new boolean[G.V()];
+        id = new int[G.V()];
+        DepthFirstOrder df = new DepthFirstOrder(G.reverse());
+        for (int s:df.reversePost()
+             ) {
+            bfs(G,s);
+            count++;
+        }
+
+    }
+    
+    private void bfs(Digraph G,int v){
+        marked[v] = true;
+        id[v] = count;
+        for (int w:G.adj(v)
+             ) {
+            if (!marked[w]) 
+                bfs(G,w);
+        }
+    }
+    
+    
+    public boolean stronglyConnected(int v,int w){
+        return id[v] == id[w];
+    }
+    
+    public int id(int v){
+        return id[v];
+    }
+    
+    public int count(){
+        return count;
+    }
+}
+
+```
