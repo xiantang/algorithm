@@ -17,7 +17,7 @@ public class DepthFirstOrder {
         reversePost=new Stack<Integer>();
         for (int i = 0; i < G.V(); i++) {
                 if (!marked[i])dfs(G,i);
-            }
+        }
 
     }
 
