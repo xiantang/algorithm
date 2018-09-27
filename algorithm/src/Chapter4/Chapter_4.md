@@ -306,3 +306,31 @@ public void dfs(Digraph G,int v){
 2. dfs(w)没有被标记 dfs(w)进入系统堆栈后返回才会   
 之后再返回dfs(v)  所以当他门两个数进入reversePost栈  
 w永远比v深
+
+```java
+package Chapter4;
+
+import java.util.HashMap;
+
+public class Topological {
+    private Iterable<Integer> order;
+
+    public Topological(Digraph G){
+        DirectedCycle cycleFinder = new DirectedCycle(G);
+        if (!cycleFinder.isHasCycle()){
+            DepthFirstOrder dfs = new DepthFirstOrder(G);
+            order = dfs.reversePost();
+
+        }
+
+    }
+
+    public Iterable<Integer> order(){
+        return order;
+    }
+    public boolean isDAG(){
+        return order!=null;
+    }
+
+}
+```

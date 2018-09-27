@@ -3,6 +3,8 @@ package Chapter4;
 import Chapter1.Stack;
 import algs4.In;
 
+import java.util.HashMap;
+
 public class DirectedCycle {
     private boolean[] marked;
     private int[] edgeTo;
@@ -15,6 +17,7 @@ public class DirectedCycle {
         marked = new boolean[G.V()];
         for (int i = 0; i < G.V(); i++) {
             if (!marked[i])dfs(G,i);
+
         }
     }
     public void dfs(Digraph G,int v){

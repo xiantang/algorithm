@@ -1,5 +1,7 @@
 package Chapter4;
 
+import java.util.HashMap;
+
 public class Topological {
     private Iterable<Integer> order;
 
