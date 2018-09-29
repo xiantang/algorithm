@@ -1,7 +1,7 @@
 package Chapter4;
 
 public class DirectedDFS {
-    private  boolean[] marked;
+    public   boolean[] marked;
     public DirectedDFS(Digraph G,int s) {
         marked = new boolean[G.V()];
         dfs(G,s);

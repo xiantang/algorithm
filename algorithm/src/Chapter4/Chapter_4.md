@@ -409,3 +409,31 @@ public class KosarjuSCC {
  ，那么就存在s->v的路径    
  但是无法访问到v就表明v已经被标记过了，就表明s被
  标记了，与上面产生矛盾达成反证。
+ 
+ ### 顶点对的可达性   
+ 
+ 有向图G的传递闭包是由一组相同的顶点组成的另一幅有向图    
+ 在传递闭包中存在一条v->w的边当且仅当G中w->v是可达的   
+ 
+ 
+ ```java
+package Chapter4;
+
+public class TransitiveClousre {
+    
+    private DirectedDFS[] all;
+    TransitiveClousre(Digraph G){
+        all = new DirectedDFS[G.V()];
+        for (int v = 0; v <G.V() ; v++) {
+            all[v] = new DirectedDFS(G,v);
+        }
+    }
+    boolean reachable(int v,int w){
+        return all[v].marked[w];
+    }
+}
+
+```
+
+### 最小生成树    
+
