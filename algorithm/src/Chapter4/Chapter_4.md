@@ -456,3 +456,21 @@ public class TransitiveClousre {
 需要使用反证法证明，假设T不包含最小的横切边e   
 如果将e加入T必然形成一个环，并且环至少含有应外一条横切边f
 f大于e，那么删除f就可以得到一个更小的树，矛盾所以错误。
+
+
+无向权重图 返回所有的树枝     
+
+```java
+public Iterable<Edge> edges(){
+        Bag<Edge> edges = new Bag<Edge>();
+        for (int v = 0; v <V ; v++) {
+            for (Edge e:adj[v]
+                 ) {
+                if (e.other(v)>v)edges.add(e);
+            }
+        }
+        return edges;
+    }
+```
+遍历每个背包，从背包里面获取边，如果该边的另一个顶点大于   
+其他顶点。那么就只有一条边进入，不会将两个边插入背包。
