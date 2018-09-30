@@ -19,7 +19,7 @@ public class Edge implements Comparable<Edge>{
     public int other(int vertex) {
         if (vertex == v) return w;
         if (vertex == w) return v;
-        else throw new RuntimeException("Inconsistent edge")
+        else throw new RuntimeException("Inconsistent edge");
 
     }
     public int compareTo(Edge that){
