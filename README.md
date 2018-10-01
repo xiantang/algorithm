@@ -1,6 +1,7 @@
 # algrorithm
 算法 第四版本代码 java
-### 沉迷算法无法自拔
+学习算法的时候的笔记   
+不包含课后习题
 
 1. [基础部分](https://github.com/xiantang/algorithm/blob/master/algorithm/src/Chapter1/Chapter_1.md)  
 2. [排序](https://github.com/xiantang/algorithm/blob/master/algorithm/src/Chapter2/Chapter_2.md)
