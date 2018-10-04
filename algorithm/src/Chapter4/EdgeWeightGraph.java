@@ -49,7 +49,10 @@ public class EdgeWeightGraph {
         }
         return edges;
     }
-
+    public Iterable<Edge> adj(int v){
+        //获得v的所有相邻边
+        return adj[v];
+    }
     @Override
     public String toString() {
         String res="";
