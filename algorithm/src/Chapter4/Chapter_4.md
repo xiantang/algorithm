@@ -577,3 +577,39 @@ public class PrimMST {
 
 按照权重的大小顺序来添加边  并且添加的新的边不会和老的
 边形成环  直到树中含有V-1个边位置   
+
+```java
+public class KruskalMST {
+    private Queue<Edge> mst;
+    public KruskalMST(EdgeWeightGraph G){
+        mst = new Queue<Edge>();
+        MinPQ<Edge> pq = new MinPQ<>();
+        for (Edge e:G.edges()
+             ) {
+            pq.insert(e);
+        }
+        UF uf = new UF(G.V());
+        while (!pq.isEmpty()&&mst.size()<G.V()-1){
+            //如果pq是空的或者mst的边小于G的点数    
+            Edge e = pq.delMin(); // 删除最小的边
+            int v = e.either(); 
+            int w = e.other(v);
+            if (uf.connected(v,w)){
+                continue;
+            }//继续
+            uf.union(v,w);//否则就连接两个
+            mst.enqueue(e);
+            
+        }
+    }
+    public Iterable<Edge> edges(){
+        return mst;
+    }
+}
+```
+使用一个队列`mst`来记录最小生成树的所有边   
+将图中所有的边加入优先级队列    
+使用迭代从优先级队列中吐出一个最小的边   
+查看两个端点是否有连通  
+否则就连通这两个端点  将这个最小生成树的  
+边加入队列`mst`中
