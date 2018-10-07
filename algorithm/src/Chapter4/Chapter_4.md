@@ -527,6 +527,9 @@ public class LazyPrimMST {
 
 ### prim 即时算法    
 
+
+即时算法的核心是通过维护一个权重的列表    
+并且拥有一个带有索引的优先级队列   
 ```java
 package Chapter4;
 
@@ -569,3 +572,8 @@ public class PrimMST {
     }
 }
 ```
+
+### Kruskal 算法   
+
+按照权重的大小顺序来添加边  并且添加的新的边不会和老的
+边形成环  直到树中含有V-1个边位置   
