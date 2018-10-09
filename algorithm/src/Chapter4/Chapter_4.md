@@ -618,3 +618,49 @@ public class KruskalMST {
 
 最短路径树(SPT)：包含了顶点s到所有可达的顶点的最短路径    
 
+结论:将最小的非树顶点放松并且加入树中直到所有顶点都在树  
+中，或者是不是树顶点的被设置为无穷大    
+
+问题：为什么要按照从小到大出队啊 ？？？
+
+```java
+public class DijkstraSP {
+    private DirectedEdge[] edgeTo;
+    private double[] distTo;
+    private IndexMinPQ<Double> pq;
+    public DijkstraSP(EdgeWeightDigraph G,int s){
+        edgeTo = new DirectedEdge[G.V()];
+        distTo = new double[G.V()];
+        pq = new IndexMinPQ<Double>(G.V());
+        for (int v = 0; v <G.V() ; v++) {
+            distTo[v] = Double.POSITIVE_INFINITY;
+        }
+        distTo[s] = 0.0; // 起点的位置
+        pq.insert(s,0.0);
+        while (!pq.isEmpty())
+            relax(G,pq.delMin());
+    }
+    private void relax(EdgeWeightDigraph G,int v){
+        for (DirectedEdge e:G.adj(v)
+             ) {
+            int w = e.to();
+            // 如果s到v的权重加上v到w的权重 小于w的权重
+            if (distTo[w]>distTo[v]+e.getWeight()){
+                // 更新权重
+                distTo[w] = distTo[v]+e.getWeight();
+                // 更新到达w的边e
+                edgeTo[w] = e;
+                if (pq.contains(w)){
+                    pq.change(w,distTo[w]);
+                }
+                // 插入优先级队列  
+                else pq.insert(w,distTo[w]);
+            }
+        }
+    }
+}
+```
+核心方法:`relax()`    
+放松一个边的意思是将当前边的权重加上当前点的距离  
+是否小于目标端点的权重   
+
