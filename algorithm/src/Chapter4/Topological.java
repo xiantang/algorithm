@@ -15,6 +15,7 @@ public class Topological {
 
     }
 
+
     public Iterable<Integer> order(){
         return order;
     }
