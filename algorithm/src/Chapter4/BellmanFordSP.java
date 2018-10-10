@@ -48,13 +48,15 @@ public class BellmanFordSP {
         for (int v = 0; v < V ; v++)
             if (edgeTo[v]!=null)
                 spt.addEdge(edgeTo[v]);
-
+        EdgeWeightCycleFinder cf;
+        cf = new EdgeWeightCycleFinder(spt);
+        cycle = cf.cycle;
     }
     private boolean hasNgativeCycle(){
-
+        return cycle !=null;
     }
     private Iterable<DirectedEdge> negativeCycle(){
-
+        return cycle;
     }
 
 
