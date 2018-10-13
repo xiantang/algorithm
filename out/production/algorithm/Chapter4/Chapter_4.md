@@ -456,3 +456,217 @@ public class TransitiveClousre {
 需要使用反证法证明，假设T不包含最小的横切边e   
 如果将e加入T必然形成一个环，并且环至少含有应外一条横切边f
 f大于e，那么删除f就可以得到一个更小的树，矛盾所以错误。
+
+
+无向权重图 返回所有的树枝     
+
+```java
+public Iterable<Edge> edges(){
+        Bag<Edge> edges = new Bag<Edge>();
+        for (int v = 0; v <V ; v++) {
+            for (Edge e:adj[v]
+                 ) {
+                if (e.other(v)>v)edges.add(e);
+            }
+        }
+        return edges;
+    }
+```
+遍历每个背包，从背包里面获取边，如果该边的另一个顶点大于   
+其他顶点。那么就只有一条边进入，不会将两个边插入背包。
+
+### Prim算法    
+
+结论:每一步都为一颗生长的树中添加一条边，一开始这颗树只有一颗顶点    
+然后会向他添加V-1条边，每次总是将下一条连接树中的顶点与不在树中的最小横切边   
+加入树中
+
+```java
+package Chapter4;
+import algs4.MinPQ;
+import algs4.Queue;
+
+public class LazyPrimMST {
+    private boolean[] marked;
+    private MinPQ<Edge> pq;
+    private Queue<Edge> mst;
+    public LazyPrimMST(EdgeWeightGraph G){
+        marked = new boolean[G.V()];
+        mst = new Queue<Edge>();
+        pq  = new MinPQ<Edge>();
+        visit(G,0);
+        while (!pq.isEmpty()){
+            Edge e = pq.delMin(); // 从优先级队列中获取最小的边   
+            int v = e.either(),w = e.other(v);
+            if (marked[v] && marked[w])continue;
+            if (!marked[v]) visit(G,v);
+            if (!marked[w])visit(G,w);
+            
+        }
+    }
+    public void visit(EdgeWeightGraph G,int v){
+        marked[v] = true;
+        for (Edge e:G.adj(v)
+             ) {
+            if (!marked[e.other(v)])pq.insert(e);
+        }
+    }
+    public Iterable<Edge> edges(){
+        return mst;
+    }
+    private double weight(){
+        int weight = 0;
+        for (Edge e:edges()
+             ) {
+            weight+=e.weight();
+        }
+        return weight;
+    }
+}
+```
+
+### prim 即时算法    
+
+
+即时算法的核心是通过维护一个权重的列表    
+并且拥有一个带有索引的优先级队列   
+```java
+package Chapter4;
+
+import Chapter2.IndexMinPQ;
+
+public class PrimMST {
+    private Edge[] edgeTo;
+    private double[] distTo;
+    private boolean[] marked;
+    private IndexMinPQ<Double> pq;
+    public PrimMST(EdgeWeightGraph G){
+        edgeTo = new Edge[G.V()];
+        distTo = new double[G.V()];
+        marked = new boolean[G.V()];
+        for (int v = 0; v <G.V() ; v++) {
+            distTo[v] = Double.POSITIVE_INFINITY;
+        }
+        pq = new IndexMinPQ<>(G.V());
+        distTo[0] = 0.0;
+        pq.insert(0,0.0);
+        while (!pq.isEmpty()){
+            // 删除队列中最小的节点
+            visit(G,pq.delMin());
+        }
+    }
+    private void visit(EdgeWeightGraph G,int v){
+        marked[v] = true;
+        for (Edge e:G.adj(v) // 获取所有的v相邻的节点
+             ) {
+            int w = e.other(v);
+            if (marked[w])continue; // 如果被标记，那么就继续
+            if (e.weight()<distTo[w]){
+                distTo[w] = e.weight();
+                edgeTo[w] = e;
+                if (pq.contains(w)) pq.change(w,distTo[w]);
+                else pq.insert(w,distTo[w]);
+            }
+        }
+
+    }
+}
+```
+
+### Kruskal 算法   
+
+按照权重的大小顺序来添加边  并且添加的新的边不会和老的
+边形成环  直到树中含有V-1个边位置   
+
+```java
+public class KruskalMST {
+    private Queue<Edge> mst;
+    public KruskalMST(EdgeWeightGraph G){
+        mst = new Queue<Edge>();
+        MinPQ<Edge> pq = new MinPQ<>();
+        for (Edge e:G.edges()
+             ) {
+            pq.insert(e);
+        }
+        UF uf = new UF(G.V());
+        while (!pq.isEmpty()&&mst.size()<G.V()-1){
+            //如果pq是空的或者mst的边小于G的点数    
+            Edge e = pq.delMin(); // 删除最小的边
+            int v = e.either(); 
+            int w = e.other(v);
+            if (uf.connected(v,w)){
+                continue;
+            }//继续
+            uf.union(v,w);//否则就连接两个
+            mst.enqueue(e);
+            
+        }
+    }
+    public Iterable<Edge> edges(){
+        return mst;
+    }
+}
+```
+使用一个队列`mst`来记录最小生成树的所有边   
+将图中所有的边加入优先级队列    
+使用迭代从优先级队列中吐出一个最小的边   
+查看两个端点是否有连通  
+否则就连通这两个端点  将这个最小生成树的  
+边加入队列`mst`中
+
+### 最短路径算法   
+
+最短路径树(SPT)：包含了顶点s到所有可达的顶点的最短路径    
+
+结论:将最小的非树顶点放松并且加入树中直到所有顶点都在树  
+中，或者是不是树顶点的被设置为无穷大    
+
+问题：为什么要按照从小到大出队啊 ？？？
+
+```java
+public class DijkstraSP {
+    private DirectedEdge[] edgeTo;
+    private double[] distTo;
+    private IndexMinPQ<Double> pq;
+    public DijkstraSP(EdgeWeightDigraph G,int s){
+        edgeTo = new DirectedEdge[G.V()];
+        distTo = new double[G.V()];
+        pq = new IndexMinPQ<Double>(G.V());
+        for (int v = 0; v <G.V() ; v++) {
+            distTo[v] = Double.POSITIVE_INFINITY;
+        }
+        distTo[s] = 0.0; // 起点的位置
+        pq.insert(s,0.0);
+        while (!pq.isEmpty())
+            relax(G,pq.delMin());
+    }
+    private void relax(EdgeWeightDigraph G,int v){
+        for (DirectedEdge e:G.adj(v)
+             ) {
+            int w = e.to();
+            // 如果s到v的权重加上v到w的权重 小于w的权重
+            if (distTo[w]>distTo[v]+e.getWeight()){
+                // 更新权重
+                distTo[w] = distTo[v]+e.getWeight();
+                // 更新到达w的边e
+                edgeTo[w] = e;
+                if (pq.contains(w)){
+                    pq.change(w,distTo[w]);
+                }
+                // 插入优先级队列  
+                else pq.insert(w,distTo[w]);
+            }
+        }
+    }
+}
+```
+核心方法:`relax()`    
+放松一个边的意思是将当前边的权重加上当前点的距离  
+是否小于目标端点的权重   
+
+### Bellman-Ford算法
+
+
+    
+
+
