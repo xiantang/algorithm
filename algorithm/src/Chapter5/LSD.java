@@ -14,29 +14,36 @@ public class LSD {
             }
             for (int r = 0; r <R ; r++) {
                 count[r+1]+=count[r];
-            }
+            }//count 转换为引索
 
             for (int i = 0; i <N ; i++) {
+
                 aux[count[a[i].charAt(d)]++] = a[i];
+             //分类到aux
             }
+
             for (int i = 0; i <N ; i++) {
                 a[i] = aux[i];
             }
 
         }
 
-
+        for (String string:aux
+        ) {
+            System.out.println(string);
+        }
     }
 
     public static void main(String[] args) {
         String string[] = {"QASD","QWER","CDSA","EDFS","CFAA"};
         int W = 4;
         sort(string,W);
-        for (String s
-                :string
-             ) {
-            System.out.println(s);
-        }
+//        for (String s
+//                :string
+//             ) {
+//            System.out.println(s);
+//        }
+
     }
 
 }
