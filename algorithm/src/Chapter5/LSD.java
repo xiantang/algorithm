@@ -14,7 +14,7 @@ public class LSD {
             }
             for (int r = 0; r <R ; r++) {
                 count[r+1]+=count[r];
-            }//count 转换为引索
+            }//count 转换为索引
 
             for (int i = 0; i <N ; i++) {
 
@@ -24,26 +24,23 @@ public class LSD {
 
             for (int i = 0; i <N ; i++) {
                 a[i] = aux[i];
-                //会写
+                //回写
             }
 
         }
 
-        for (String string:aux
-        ) {
-            System.out.println(string);
-        }
+
     }
 
     public static void main(String[] args) {
         String string[] = {"QASD","QWER","CDSA","EDFS","CFAA"};
         int W = 4;
         sort(string,W);
-//        for (String s
-//                :string
-//             ) {
-//            System.out.println(s);
-//        }
+        for (String s
+                :string
+             ) {
+            System.out.println(s);
+        }
 
     }
 
