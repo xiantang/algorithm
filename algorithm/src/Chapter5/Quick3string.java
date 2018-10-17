@@ -14,7 +14,7 @@ public class Quick3string {
     private static void sort(String[] a,int lo,int hi,int d){
         if (hi<=lo)return;
         int lt = lo,gt =hi;
-        int v = charAt(a[lo],d);
+        int v = charAt(a[lo],d);// 找到第一个字符并且以它为中点
         int i = lo+1;
         while (i<=gt){
             int t = charAt(a[i],d);  //返回当前i的所指字符的大小
