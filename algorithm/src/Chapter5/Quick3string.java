@@ -23,6 +23,7 @@ public class Quick3string {
             else i++;
 
         }
+
         sort(a,lo,lt-1,d); // 排序上面当前字母 部分的
         if (v>=0)sort(a,lt,gt,d+1); // 排序相等的字母的下一部分
         sort(a,gt+1,hi,d);// 排序下面当前字母的部分
