@@ -1,5 +1,7 @@
 package Chapter5;
 
+import algs4.Queue;
+
 public class TrieST<Value> {
     private static int R = 256;
     private Node root;
@@ -50,9 +52,29 @@ public class TrieST<Value> {
             count+=size(x.next[c]);
         }
         return count;
+    }
+
+    private Iterable<String> keys(){
+        return keysWithPrefix("");
+    }
+
+    private Iterable<String> keysWithPrefix(String pre){
+        Queue<String> q= new Queue<String>();
+        collect(get(root,pre,0),pre,q);
+        return q;
+    }
+
+    private void collect(Node x,String pre,Queue<String> q){
+        if (x==null)return;
+        if (x!=null)q.enqueue(pre);
+        for (int r = 0; r <R ; r++) {
+            collect(x,pre+r,q);
+        }
 
 
     }
+
+
 }
 
 
