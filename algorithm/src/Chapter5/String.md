@@ -176,4 +176,46 @@ public class Quick3string {
 查找操作的三种情况：
 1. 尾字符所对应的节点中的值非空
 2. 尾字符所对应的节点的值为空
-3. 查找结束于一条空链接
+3. 查找结束于一条空链接  
+实现:
+
+```java
+public class TrieST<Value> {
+    private static int R = 256;
+    private Node root;
+
+    private static class Node {
+        private Object val;
+        private Node[] next = new Node[R];
+    }
+
+    private Value get(String key) {
+        Node x = get(root, key, 0);
+        if (x == null) return null;
+        else return (Value) x.val;
+
+    }
+
+    private Node get(Node x, String key, int d) {
+        if (x == null) return null;//如果是null 就return null
+        if (d == key.length()) return x; //当字符串的长度和当前字符的位置相同就return
+        char c = key.charAt(d);
+        return get(x.next[c], key, d + 1);
+    }
+
+    private void put(String key, Value val) {
+        root = put(root, key, val, 0);
+    }
+
+    private Node put(Node x, String key, Value val, int d) {
+        if (x == null) x = new Node();
+        if (d == key.length()) {
+            x.val = val;
+            return x;
+        }
+        char c = key.charAt(d);
+        x.next[c] = put(x.next[c], key, val, d + 1);
+        return x;
+    }
+}
+```
