@@ -1,5 +1,6 @@
 package Chapter5;
 
+import algs4.In;
 import algs4.Queue;
 
 public class TrieST<Value> {
@@ -55,23 +56,40 @@ public class TrieST<Value> {
     }
 
     private Iterable<String> keys(){
+        //获取所有字符串
         return keysWithPrefix("");
     }
 
     private Iterable<String> keysWithPrefix(String pre){
+        //获取所有以pre开头的字符串
         Queue<String> q= new Queue<String>();
+
         collect(get(root,pre,0),pre,q);
         return q;
     }
 
     private void collect(Node x,String pre,Queue<String> q){
         if (x==null)return;
-        if (x!=null)q.enqueue(pre);
+        if (x.val!=null){
+//            System.out.println(pre);
+            q.enqueue(pre);
+        }
         for (int r = 0; r <R ; r++) {
-            collect(x,pre+r,q);
+            collect(x.next[r],pre+(char)r,q);
         }
 
+    }
 
+    public static void main(String[] args) {
+        TrieST<Integer> trieST = new TrieST<Integer>();
+        trieST.put("abnaaa",1123);
+        trieST.put("abcd",2123);
+        trieST.put("aeqeq",21);
+        System.out.println(trieST.keysWithPrefix("ab"));
+        for (String s:trieST.keys()
+             ) {
+            System.out.println(s);
+        }
     }
 
 

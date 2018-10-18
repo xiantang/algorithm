@@ -217,5 +217,45 @@ public class TrieST<Value> {
         x.next[c] = put(x.next[c], key, val, d + 1);
         return x;
     }
+    private Iterable<String> keys(){
+            //获取所有字符串
+            return keysWithPrefix("");
+        }
+    
+        private Iterable<String> keysWithPrefix(String pre){
+            //获取所有以pre开头的字符串
+            Queue<String> q= new Queue<String>();
+    
+            collect(get(root,pre,0),pre,q);
+            return q;
+        }
+    
+        private void collect(Node x,String pre,Queue<String> q){
+            if (x==null)return;
+            if (x.val!=null){
+    //            System.out.println(pre);
+                q.enqueue(pre);
+            }
+            for (int r = 0; r <R ; r++) {
+                collect(x.next[r],pre+(char)r,q);
+            }
+    
+        }
+    
+        public static void main(String[] args) {
+            TrieST<Integer> trieST = new TrieST<Integer>();
+            trieST.put("abnaaa",1123);
+            trieST.put("abcd",2123);
+            trieST.put("aeqeq",21);
+            System.out.println(trieST.keysWithPrefix("ab"));
+            for (String s:trieST.keys()
+                 ) {
+                System.out.println(s);
+            }
+        }
 }
 ```
+
+所有键:  
+1. 使用`keysWithPrefix()`方法查找所有`""`开头的字符串   
+2. 在其中调用`collect()`通过递归遍历所有的链接 记住`int`转换为`char`
