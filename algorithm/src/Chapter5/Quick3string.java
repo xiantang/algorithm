@@ -39,7 +39,7 @@ public class Quick3string {
         sort(a);
         for (String s:a
              ) {
-            System.out.println(s);;
+            System.out.println(s);
         }
     }
 }
