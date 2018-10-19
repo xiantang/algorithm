@@ -241,7 +241,25 @@ public class TrieST<Value> {
             }
     
         }
-    
+        public Iterable<String> keysThatMatch(String pat){
+                Queue<String> q =  new Queue<String>();
+                collect(root,"",pat,q);
+                return q;
+        
+            }
+            private void collect(Node x,String pre,String pat,Queue<String> q){
+                int d= pre.length();
+                if (x==null)return;
+                if (d== pat.length()&&x.val!=null)q.enqueue(pre);
+                if (d == pat.length())return;
+                char next = pat.charAt(d);
+                for (int c = 0; c <R ; c++) {
+                    if (next=='.'||next==c){
+                        collect(x.next[c],pre+(char)c,pat,q);
+                    }
+                }
+        
+            }
         public static void main(String[] args) {
             TrieST<Integer> trieST = new TrieST<Integer>();
             trieST.put("abnaaa",1123);
@@ -259,3 +277,8 @@ public class TrieST<Value> {
 所有键:  
 1. 使用`keysWithPrefix()`方法查找所有`""`开头的字符串   
 2. 在其中调用`collect()`通过递归遍历所有的链接 记住`int`转换为`char`
+
+通配符匹配:
+1. `keysThatMatch`方法创建一个队列存储字符串  获取所有匹配`pat`的字符串   
+2. `collect`方法分别为3种情况 如果`x`是null 推出栈
+如果当前长度和pre的长度相同并且`x.val`不是空就压入队列     

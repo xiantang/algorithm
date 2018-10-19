@@ -79,17 +79,32 @@ public class TrieST<Value> {
         }
 
     }
+    public Iterable<String> keysThatMatch(String pat){
+        Queue<String> q =  new Queue<String>();
+        collect(root,"",pat,q);
+        return q;
 
+    }
+    private void collect(Node x,String pre,String pat,Queue<String> q){
+        int d= pre.length();
+        if (x==null)return;
+        if (d== pat.length()&&x.val!=null)q.enqueue(pre);
+        if (d == pat.length())return;
+        char next = pat.charAt(d);
+        for (int c = 0; c <R ; c++) {
+            if (next=='.'||next==c){
+                collect(x.next[c],pre+(char)c,pat,q);
+            }
+        }
+
+    }
     public static void main(String[] args) {
         TrieST<Integer> trieST = new TrieST<Integer>();
-        trieST.put("abnaaa",1123);
+        trieST.put("abnd",1123);
         trieST.put("abcd",2123);
         trieST.put("aeqeq",21);
-        System.out.println(trieST.keysWithPrefix("ab"));
-        for (String s:trieST.keys()
-             ) {
-            System.out.println(s);
-        }
+        System.out.println(trieST.keysThatMatch("a..d"));
+
     }
 
 
