@@ -105,12 +105,9 @@ public class TrieST<Value> {
     private int search(Node x,String s, int d,int length){
         if (x==null)return length;
         if (x.val!=null)length=d;
-        if (s.length()==d)return length;
+        if (s.length()==d)return length; //如果长度和字符串相同就返回长度
         char c = s.charAt(d);
         return search(x.next[c],s,d+1,length);
-
-
-
     }
     public static void main(String[] args) {
         TrieST<Integer> trieST = new TrieST<Integer>();

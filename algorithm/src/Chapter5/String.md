@@ -260,6 +260,18 @@ public class TrieST<Value> {
                 }
         
             }
+            
+        public String longstPrefixOf(String s){
+                int length = search(root,s,0,0);
+                return s.substring(0,length);
+            }
+            private int search(Node x,String s, int d,int length){
+                if (x==null)return length;
+                if (x.val!=null)length=d;  
+                if (s.length()==d)return length; //如果长度和字符串相同就返回长度
+                char c = s.charAt(d);
+                return search(x.next[c],s,d+1,length);
+            }    
         public static void main(String[] args) {
             TrieST<Integer> trieST = new TrieST<Integer>();
             trieST.put("abnaaa",1123);
@@ -282,3 +294,7 @@ public class TrieST<Value> {
 1. `keysThatMatch`方法创建一个队列存储字符串  获取所有匹配`pat`的字符串   
 2. `collect`方法分别为3种情况 如果`x`是null 推出栈
 如果当前长度和pre的长度相同并且`x.val`不是空就压入队列     
+
+最长前缀:
+使用`search`方法 从当前节点开始👇查找  并且是根据当前字符来查找  当val存在的时候 更新d的值  
+如果不存在并且x不是空的 就继续向下查找 
