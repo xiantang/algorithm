@@ -98,12 +98,26 @@ public class TrieST<Value> {
         }
 
     }
+    public String longstPrefixOf(String s){
+        int length = search(root,s,0,0);
+        return s.substring(0,length);
+    }
+    private int search(Node x,String s, int d,int length){
+        if (x==null)return length;
+        if (x.val!=null)length=d;
+        if (s.length()==d)return length;
+        char c = s.charAt(d);
+        return search(x.next[c],s,d+1,length);
+
+
+
+    }
     public static void main(String[] args) {
         TrieST<Integer> trieST = new TrieST<Integer>();
         trieST.put("abnd",1123);
         trieST.put("abcd",2123);
         trieST.put("aeqeq",21);
-        System.out.println(trieST.keysThatMatch("a..d"));
+        System.out.println(trieST.longstPrefixOf("abn"));
 
     }
 
