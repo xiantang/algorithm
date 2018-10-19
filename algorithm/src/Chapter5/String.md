@@ -260,7 +260,27 @@ public class TrieST<Value> {
                 }
         
             }
-            
+        public void delete(String key){
+                root = delete(root,key,0);
+            }
+            private Node delete(Node x,String key,int d){
+                if (x==null)return null;
+                if (d==key.length())x.val=null;
+                else {
+                    char c = key.charAt(d);
+                    x.next[c] = delete(x.next[c],key,d+1);
+        
+                }
+                if (x.val!=null){
+                    return x;
+                }
+                for (int r = 0; r <R ; r++) {
+                    if (x.next[r]!=null)return x;
+                }
+                return null;
+        
+        
+            }    
         public String longstPrefixOf(String s){
                 int length = search(root,s,0,0);
                 return s.substring(0,length);
@@ -271,7 +291,8 @@ public class TrieST<Value> {
                 if (s.length()==d)return length; //如果长度和字符串相同就返回长度
                 char c = s.charAt(d);
                 return search(x.next[c],s,d+1,length);
-            }    
+            }
+            
         public static void main(String[] args) {
             TrieST<Integer> trieST = new TrieST<Integer>();
             trieST.put("abnaaa",1123);
@@ -298,3 +319,7 @@ public class TrieST<Value> {
 最长前缀:
 使用`search`方法 从当前节点开始👇查找  并且是根据当前字符来查找  当val存在的时候 更新d的值  
 如果不存在并且x不是空的 就继续向下查找 
+
+删除指定键:
+实现非常巧妙 找到那个键 将他的值设置为空 如果没找到就直接返回空 这样的话 在回溯的过程中  
+如果当前的节点没有子节点并且`val=0`那么就将他设置为`null`就达成了删除的作用 

@@ -109,13 +109,35 @@ public class TrieST<Value> {
         char c = s.charAt(d);
         return search(x.next[c],s,d+1,length);
     }
+    public void delete(String key){
+        root = delete(root,key,0);
+    }
+    private Node delete(Node x,String key,int d){
+        if (x==null)return null;
+        if (d==key.length())x.val=null;
+        else {
+            char c = key.charAt(d);
+            x.next[c] = delete(x.next[c],key,d+1);
+
+        }
+        if (x.val!=null){
+            return x;
+        }
+        for (int r = 0; r <R ; r++) {
+            if (x.next[r]!=null)return x;
+        }
+        return null;
+
+
+    }
     public static void main(String[] args) {
         TrieST<Integer> trieST = new TrieST<Integer>();
         trieST.put("abnd",1123);
-        trieST.put("abcd",2123);
+        trieST.put("ab",2123);
         trieST.put("aeqeq",21);
-        System.out.println(trieST.longstPrefixOf("abn"));
-
+//        System.out.println(trieST.longstPrefixOf("abn"));
+        trieST.delete("abnd");
+        System.out.println(trieST.get("ab"));;
     }
 
 
