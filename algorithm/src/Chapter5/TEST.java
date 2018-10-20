@@ -9,7 +9,7 @@ public class TEST {
 //
 //        System.out.println(c);
         Alphabet alphabet = new Alphabet("ACGT");
-        int R = alphabet.R();
+        int R = alphabet.radix();
         int a [] = alphabet.toIndices("AAAAA");
         for (int i = 0; i <a.length ; i++) {
             System.out.println(i);

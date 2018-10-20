@@ -3,7 +3,6 @@ package Chapter5;
 import Chapter1.Insertion;
 
 public class MSD {
-    private static int R=256;   //基数
     private static final int M = 15;  //小数组切换阀值
     private static String[] aux;  //数据分类的辅助数组
     private static int charAt(String s,int d){
@@ -21,14 +20,16 @@ public class MSD {
         if (hi<lo){
             return;
         }
-        int count[] = new int[R+2];
+        //基数
+        int r1 = 256;
+        int count[] = new int[r1 +2];
 
         for (int i =lo; i <=hi ; i++) {
 
             int index = charAt(a[i],d)+2;
             count[index]++;  //计算频率
         }
-        for (int r = 0; r <R+1 ; r++) {
+        for (int r = 0; r < r1 +1 ; r++) {
             count[r+1] += count[r];
         }
         for (int i = lo; i <=hi ; i++) {
@@ -37,7 +38,7 @@ public class MSD {
         for (int i = lo; i <=hi ; i++) {
             a[i] = aux[i-lo];
         }
-        for (int r = 0; r <R ; r++) {
+        for (int r = 0; r < r1; r++) {
 
             sort(a,lo+count[r],lo+count[r+1]-1,d+1);
         }
