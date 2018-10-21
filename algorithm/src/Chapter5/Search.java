@@ -18,8 +18,17 @@ public class Search {
         return N;
     }
     public static int pointSearch(String pat,String txt){
-
-
+        int i,M = pat.length();
+        int j,N = txt.length();
+        for (i = 0,j=0; i <M&&j<N ; j++) {
+            if (pat.charAt(i)==txt.charAt(j))i++;
+            else {
+                i=0;
+                j-=i;
+            }
+        }
+        if (i==M) return j-M;
+        else return N;
 
 
     }
@@ -27,6 +36,6 @@ public class Search {
 
         String d= "asqqqqqq";
         String b ="q";
-        System.out.println(search(b,d));
+        System.out.println(pointSearch(b,d));
     }
 }
