@@ -17,8 +17,14 @@ public class Search {
         }
         return N;
     }
+    public static int pointSearch(String pat,String txt){
 
+
+
+
+    }
     public static void main(String[] args) {
+
         String d= "asqqqqqq";
         String b ="q";
         System.out.println(search(b,d));
