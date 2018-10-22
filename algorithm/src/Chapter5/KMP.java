@@ -9,10 +9,11 @@ public class KMP {
         int R = 256;
         dfa = new int[R][M];
         dfa[pat.charAt(0)][0] = 1;
-        for (int X = 0,j=1; j<M ; X++) {
+        for (int X = 0,j=1; j<M ; j++) {
             for (int c = 0; c <R ; c++)
                 dfa[c][j] = dfa[c][X];
-                X = dfa[pat.charAt(j)][X];
+            dfa[pat.charAt(j)][j] = j+1;
+            X = dfa[pat.charAt(j)][X];
         }
     }
     public int search(String txt){
@@ -23,5 +24,11 @@ public class KMP {
         if (j==M)return i-M;
         else return N;
 
+    }
+
+    public static void main(String[] args) {
+        String a = "AQAFJSNJFSN";
+        String pat = "AFJ";
+        System.out.println(new KMP(pat).search(a));
     }
 }
