@@ -29,6 +29,7 @@ public class KMP {
     public static void main(String[] args) {
         String a = "AQAFJSNJFSN";
         String pat = "JFSN";
+        System.out.println(1);
         System.out.println(new KMP(pat).search(a));
     }
 }
