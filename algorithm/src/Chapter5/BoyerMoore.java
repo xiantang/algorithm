@@ -34,9 +34,15 @@ public class BoyerMoore {
                     break;
                 }
             }
-            // 如果跳跃的步数是0 就表明匹配成功
+            // 走出上级循环并且 步数是0就表示完成
             if (skip == 0) return i;
         }
         return  N; //没有找到匹配
+    }
+
+    public static void main(String[] args) {
+        BoyerMoore boyerMoore = new BoyerMoore("QWE");
+        System.out.println(boyerMoore.search("dqwdwdQWE"));
+
     }
 }
