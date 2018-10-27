@@ -438,3 +438,14 @@ DFA构造:
 | 重复指定次数 | 由{}指定次数 | （AB）{3} | (AB)(AB)(AB)  |
 | 重复指定范围的次数 | 由{}指定 | (AB){1-2}| (AB) \ (AB)(AB) |
 
+#### 转义序列   
+
+反斜杠将元字符和字母表的字符分隔开
+
+####  非确定有限状态自动机
+
+![](https://img-blog.csdn.net/20130717144235218?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvcGFuanVuYmlhbw==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+
+
+* 转换匹配：当前状态和字母表的一个字符相对，并且文本中的当前字符和该字符匹配
+* ε-转换：通过红色的边转换到下个状态，并且不扫描任何字符
