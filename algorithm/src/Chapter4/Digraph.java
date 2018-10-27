@@ -3,8 +3,8 @@ package Chapter4;
 import algs4.Bag;
 
 public class Digraph {
-    private final int V;
-    private int E;
+    private final int V; //端点
+    private int E; //边
     private Bag<Integer>[] adj;
 
     public  Digraph(int V){
