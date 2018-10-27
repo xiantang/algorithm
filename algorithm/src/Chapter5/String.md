@@ -463,3 +463,36 @@ NFA中离开一个状态的转换可能有多种，从这种状态可能进行�
 
 * 查找所有从状态0`ε-转换`可达到的状态来初始化集合
 * 通过第一个字符获取下面需要匹配的集合，重复上述直到停滞或者接受状态   
+
+```java
+public boolean recognizes(String txt) {
+
+        Bag<Integer> pc = new Bag<Integer>();
+        DirectedDFS dfs = new DirectedDFS(G, 0); //深度优先搜索所有 0 可达的状态
+        for (int v = 0; v <G.V() ; v++) { // 遍历有向图的所有端点
+            if (dfs.marked[v])pc.add(v); // 加入状态集合中
+        }
+        for (int i = 0; i <txt.length() ; i++) {
+            //计算所有txt[i+1]可能到达的NFA状态
+            Bag<Integer> match = new Bag<Integer>();
+            for (int v:pc)
+                if (v<M)
+                    // 如果是转换匹配 就将下个状态加入集合
+                    if (re[v] == txt.charAt(i)||re[v] == '.')
+                        match.add(v+1);
+            pc = new Bag<Integer>();
+            dfs = new DirectedDFS(G,match);
+            for (int v = 0; v <G.V() ; v++)
+                if (dfs.marked[v])pc.add(v);
+
+        }
+        for (int v:pc
+             ) {
+            if (v==M) return true; //如果最终状态中有接受状态 就返回true
+        }
+        return false;
+    }
+```
+
+#### 构造NFA
+
