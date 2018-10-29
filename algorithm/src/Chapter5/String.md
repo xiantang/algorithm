@@ -518,7 +518,7 @@ package Chapter5;
 
 import algs4.BinaryStdIn;
 import algs4.BinaryStdOut;
-import com.sun.tools.internal.ws.wsdl.document.BindingOutput;
+
 
 public class RunLengthCoding {
     public static void expend() {
@@ -558,6 +558,16 @@ public class RunLengthCoding {
 }
 ```
 
-#### 霍夫曼压缩  
+### 霍夫曼压缩  
 
 霍夫曼压缩思想:用较少的比特表示出现频繁的字符，用较多的比特表示偶尔出现的字符
+
+#### 概述    
+
+压缩
+* 构造一颗编码单词查找树  
+* 将该树以字节流的形式写入输出以供展开时候使用   
+* 使用该树将字节流编码为比特流 
+展开 
+* 读取单词查找树 
+* 使用该书将比特流解码  

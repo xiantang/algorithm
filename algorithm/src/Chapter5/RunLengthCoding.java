@@ -2,7 +2,7 @@ package Chapter5;
 
 import algs4.BinaryStdIn;
 import algs4.BinaryStdOut;
-import com.sun.tools.internal.ws.wsdl.document.BindingOutput;
+
 
 public class RunLengthCoding {
     public static void expend() {
