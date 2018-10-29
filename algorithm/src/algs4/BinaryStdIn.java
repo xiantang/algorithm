@@ -260,6 +260,7 @@ public class BinaryStdIn {
         // read one 8-bit char at a time
         while (!BinaryStdIn.isEmpty()) {
             char c = BinaryStdIn.readChar();
+
             BinaryStdOut.write(c);
         }
         BinaryStdOut.flush();
