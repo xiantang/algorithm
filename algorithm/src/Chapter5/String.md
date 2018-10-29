@@ -511,3 +511,53 @@ public boolean recognizes(String txt) {
 * 如果和上个比特不同，就写入当前计数的值，然后计算器归0
 * 如果与上个比特相同并且到达最大值，就写入计数值，再写入一个0计数值，计数器归零  
 * 增加计数器的值     
+
+
+```java
+package Chapter5;
+
+import algs4.BinaryStdIn;
+import algs4.BinaryStdOut;
+import com.sun.tools.internal.ws.wsdl.document.BindingOutput;
+
+public class RunLengthCoding {
+    public static void expend() {
+        boolean b = false;
+        while (!BinaryStdIn.isEmpty()) {
+            char cnt = BinaryStdIn.readChar();
+            for (int i = 0; i < cnt; i++) {
+                BinaryStdOut.write(b);
+            }
+            b = !b; // 转变值
+        }
+
+    }
+
+    public static void compress() {
+        char cnt = 0;
+        boolean b, old = false;
+        while (!BinaryStdIn.isEmpty()) {
+            // 读取一位
+            b = BinaryStdIn.readBoolean();
+            if (b != old) {
+                BinaryStdOut.write(cnt);
+                cnt = 0;
+                old = !old;
+            }else {
+                if (cnt == 255){
+                    BinaryStdOut.write(cnt);
+                    cnt = 0;
+                    BinaryStdOut.write(cnt);
+                }
+            }
+            cnt++;
+        }
+        BinaryStdOut.write(cnt);
+        BinaryStdOut.close();
+    }
+}
+```
+
+#### 霍夫曼压缩  
+
+霍夫曼压缩思想:用较少的比特表示出现频繁的字符，用较多的比特表示偶尔出现的字符
