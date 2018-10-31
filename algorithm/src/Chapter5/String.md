@@ -687,3 +687,8 @@ public static void buildCode(String[] st,Node x,String s){
 
 为什么是一种最优的编码格式呢？   
 
+### LZW 算法  
+
+
+
+
