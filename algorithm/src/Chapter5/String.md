@@ -684,5 +684,6 @@ public static void buildCode(String[] st,Node x,String s){
 ```
 #### 最优性
 加权外部路径长度：所有叶子和他的权重和深度的积的和
+
 为什么是一种最优的编码格式呢？   
 

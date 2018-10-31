@@ -53,6 +53,50 @@ public class Huffman {
 
     }
 
+    //  霍夫曼压缩
+    public static void compress() {
+        String s = BinaryStdIn.readString();
+        // 读取输入
+        char[] input = s.toCharArray();
+        // 统计频率
+        int freq[] = new int[R];
+        for (int i = 0; i < input.length; i++)
+            freq[input[i]]++;
+        // 构造霍夫曼编码树
+        Node root = builtTrie(freq);
+        // 递归的构造编译表
+        String st[] = new String[R];
+        buildCode(st, root, "");
+
+        // 递归的打印解码用的单词查找树
+        writeTrie(root);
+
+        // 打印字符串总数
+        BinaryStdOut.write(input.length);
+
+        // 使用霍夫曼编码处理输入
+        for (int i = 0; i <input.length ; i++) {
+            String code = st[input[i]]; // 找到字符对应的比特码
+            for (int j = 0; j <code.length() ; j++)
+                if(code.charAt(j)=='1')
+                    BinaryStdOut.write(true);
+                else BinaryStdOut.write(false);
+        }
+        BinaryStdOut.close();
+    }
+
+    // 输出查找树中的比特字符串
+    private static void writeTrie(Node x) {
+        if (x.isLeaf()) {
+            BinaryStdOut.write(true);
+            BinaryStdOut.write(x.ch);
+            return;
+        }
+        BinaryStdOut.write(false);
+        writeTrie(x.left);
+        writeTrie(x.right);
+    }
+
     // 构造单词查找树编译表
     public static String[] buildCode(Node root) {
         String[] st = new String[R];
@@ -60,6 +104,7 @@ public class Huffman {
         return st;
 
     }
+
 
     public static void buildCode(String[] st, Node x, String s) {
 
@@ -91,7 +136,7 @@ public class Huffman {
         while (pq.size() > 1) {
             Node x = pq.delMin();
             Node z = pq.delMin();
-            Node parent = new Node('\0', x.freq + z.freq, x,z);
+            Node parent = new Node('\0', x.freq + z.freq, x, z);
             pq.insert(parent);
 
         }
