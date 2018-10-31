@@ -689,6 +689,8 @@ public static void buildCode(String[] st,Node x,String s){
 
 ### LZW 算法  
 
+基础:维护一张字符串键和定长编码的编译表   
+
 
 
 
