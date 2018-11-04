@@ -2,8 +2,13 @@ package Chapter6;
 
 import algs4.MinPQ;
 import algs4.Particle;
+import algs4.StdDraw;
+
+import java.awt.*;
 
 public class CollisionSystem {
+
+
     private class Event implements Comparable<Event> {
         // 发生的时间
         private final double time;
@@ -19,7 +24,7 @@ public class CollisionSystem {
             this.b = b;
             if (a != null) countA = a.count();
             else countA = -1;
-            if (a != null) countB = b.count();
+            if (b != null) countB = b.count();
             else countB = -1;
         }
 
@@ -43,6 +48,21 @@ public class CollisionSystem {
     private double t = 0.0;       // 模拟时钟
     private Particle[] particles; // 粒子数组
 
+    // 初始化方法
+    public CollisionSystem(Particle[] particles) {
+        this.particles = particles;
+    }
+
+    // 重绘事件
+    public void redraw(double limit, double Hz) {
+        StdDraw.clear();
+        for (int i = 0; i < particles.length; i++) {
+            particles[i].draw();
+        }
+        if (t < limit)
+            pq.insert(new Event(t + 1.0 / Hz, null, null));
+    }
+
     // 模拟器代码
     private void predictCollisions(Particle a, double limit) {
         if (a == null) return;
@@ -53,11 +73,48 @@ public class CollisionSystem {
                 pq.insert(new Event(t + dt, a, particles[i]));
         }
         double dtX = a.timeToHitHorizontalWall();
-        if (dtX+t<=limit)
-            pq.insert(new Event(t+dtX,a,null));
+        if (dtX + t <= limit)
+            pq.insert(new Event(t + dtX, a, null));
         double dtY = a.timeToHitVerticalWall();
-        if (dtY+t<=limit)
-            pq.insert(new Event(t+dtY,null,a));
+        if (dtY + t <= limit)
+            pq.insert(new Event(t + dtY, null, a));
     }
 
+    private void simulate(double limit, double Hz) {
+        pq = new MinPQ<Event>();
+        // 预测所有粒子可能发生的碰撞
+        for (int i = 0; i < particles.length; i++)
+            predictCollisions(particles[i], limit);
+        // 添加重绘事件
+        pq.insert(new Event(0, null, null));
+
+        while (!pq.isEmpty()) {
+            // 吐出一个粒子
+            Event event = pq.delMin();
+            if (!event.isVaild()) continue;
+            // 更新每个粒子的位置
+            for (int i = 0; i < particles.length; i++) {
+                particles[i].move(event.time - t);
+            }
+            t = event.time;
+            Particle a = event.a, b = event.b;
+            if      (a != null && b != null) a.bounceOff(b);
+            else if (a != null && b == null) a.bounceOffVerticalWall();
+            else if (a == null && b != null) b.bounceOffHorizontalWall();
+            else if (a == null && b == null) redraw(limit,Hz);
+            predictCollisions(a,limit);
+            predictCollisions(b,limit);
+
+        }
+    }
+
+    public static void main(String[] args) {
+        StdDraw.show(0);
+        Particle[] particles = new Particle[5];
+        for (int i = 0; i <5 ; i++) {
+            particles[i] = new Particle();
+        }
+        CollisionSystem collisionSystem = new CollisionSystem(particles);
+        collisionSystem.simulate(10000,0.5);
+    }
 }
