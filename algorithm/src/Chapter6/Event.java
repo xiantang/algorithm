@@ -2,7 +2,7 @@ package Chapter6;
 
 import algs4.Particle;
 
-public class Even implements Comparable<Even> {
+public class Event implements Comparable<Event> {
     // 发生的时间
     private final double time;
     // 和事件相关的粒子，可以为空
@@ -10,7 +10,8 @@ public class Even implements Comparable<Even> {
     // 事件创建时候每个粒子所参与的碰触事件数量
     private final int countA, countB;
 
-    public Even(double time, Particle a, Particle b) {
+    public Event(double time, Particle a, Particle b) {
+        // 创建一个发生在时间t并且a与b相关的新事件
         this.time = time;
         this.a = a;
         this.b = b;
@@ -21,7 +22,16 @@ public class Even implements Comparable<Even> {
     }
 
     @Override
-    public int compareTo(Even o) {
-        return 0;
+    public int compareTo(Event that) {
+        if (this.time < that.time) return -1;
+        else if (this.time > that.time) return 1;
+        else return 0;
+    }
+
+    public boolean isVaild() {
+        if (a!=null&& a.count()!=countA) return false;
+        if (b!=null&& b.count()!=countB) return false;
+        return true;
+
     }
 }
