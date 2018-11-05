@@ -69,4 +69,14 @@
 * 内部节点:含有与页相关联的页的副本   
 * 外部节点:含有指向实际数据的引用   
 * 哨兵键:小于其他所有键，一开始B-树只含有   
-一个根节点，而根节点初始化出的就是哨兵节点   
+一个根节点，节点初始化出的就是哨兵节点   
+
+#### 查找和插入    
+
+查找:在可能含有被查找键的唯一子树中进行一次递归的  
+搜索   
+![](https://img-blog.csdn.net/20170910224108969?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjEyNDQzOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
+插入:    
+如果被插入的节点变成一个溢出的节点   
+递归调用不断向上调用分裂溢出的节点   
+![](https://img-blog.csdn.net/20170910224922359?watermark/2/text/aHR0cDovL2Jsb2cuY3Nkbi5uZXQvdTAxMjEyNDQzOA==/font/5a6L5L2T/fontsize/400/fill/I0JBQkFCMA==/dissolve/70/gravity/SouthEast)
