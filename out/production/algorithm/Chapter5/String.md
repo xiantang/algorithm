@@ -502,4 +502,262 @@ public boolean recognizes(String txt) {
 
 
 
+#### 游程编码   
+
+因为比特流是0和1交替进行的，所以只需要将游程的长度编码就行了
+
+实现：
+* 读取一个比特
+* 如果和上个比特不同，就写入当前计数的值，然后计算器归0
+* 如果与上个比特相同并且到达最大值，就写入计数值，再写入一个0计数值，计数器归零  
+* 增加计数器的值     
+
+
+```java
+package Chapter5;
+
+import algs4.BinaryStdIn;
+import algs4.BinaryStdOut;
+
+
+public class RunLengthCoding {
+    public static void expend() {
+        boolean b = false;
+        while (!BinaryStdIn.isEmpty()) {
+            char cnt = BinaryStdIn.readChar();
+            for (int i = 0; i < cnt; i++) {
+                BinaryStdOut.write(b);
+            }
+            b = !b; // 转变值
+        }
+
+    }
+
+    public static void compress() {
+        char cnt = 0;
+        boolean b, old = false;
+        while (!BinaryStdIn.isEmpty()) {
+            // 读取一位
+            b = BinaryStdIn.readBoolean();
+            if (b != old) {
+                BinaryStdOut.write(cnt);
+                cnt = 0;
+                old = !old;
+            }else {
+                if (cnt == 255){
+                    BinaryStdOut.write(cnt);
+                    cnt = 0;
+                    BinaryStdOut.write(cnt);
+                }
+            }
+            cnt++;
+        }
+        BinaryStdOut.write(cnt);
+        BinaryStdOut.close();
+    }
+}
+```
+
+### 霍夫曼压缩  
+
+霍夫曼压缩思想:用较少的比特表示出现频繁的字符，用较多的比特表示偶尔出现的字符
+
+#### 概述    
+
+压缩
+* 构造一颗编码单词查找树  
+* 将该树以字节流的形式写入输出以供展开时候使用   
+* 使用该树将字节流编码为比特流 
+展开 
+* 读取单词查找树 
+* 使用该树将比特流解码  
+
+单词查找树的节点 
+
+```java
+private static class Node implements Comparable<Node> {
+
+        private char ch; // 存储字符
+        private int freq;
+        private final Node left, right;
+
+        public Node(char ch, int freq, Node left, Node right) {
+            this.ch = ch;
+            this.freq = freq;
+            // 指向其他Node对象的引用
+            this.left = left;
+            this.right = right;
+        }
+
+        // 判断是否是叶子节点
+        public boolean isLeaf() {
+            return left == null && right == null;
+
+        }
+
+        @Override
+        public int compareTo(Node that) {
+            return this.freq - that.freq;
+        }
+    }
+```
+
+#### 使用前缀码展开  
+
+根据比特流的输入   
+从根节点向下移动，0移动左子树，1移动右子树  
+遇到叶子节点就返回根节点  
+
+```java
+// 使用前缀码展开
+    public static void expand() {
+        // 读取单词查找树
+        Node root = readTrie();
+        int N = BinaryStdIn.readInt();
+        for (int i = 0; i < N; i++) {
+            Node x = root;
+            // 迭代找到叶子节点的位置
+            while (x.isLeaf())
+                if (BinaryStdIn.readBoolean())
+                    x = x.right;
+                else x = x.left;
+            BinaryStdOut.write(x.ch);
+        }
+        BinaryStdOut.close();
+
+    }
+```
+
+#### 使用前缀码压缩  
+
+遍历整颗树为每个节点维护了一条从根节点到他的路径的二进制字符串 
+
+```java
+public static String[] buildCode(Node root) {
+        String[] st = new String[R];
+        buildCode(st, root, "");
+        return st;
+
+    }
+
+public static void buildCode(String[] st,Node x,String s){
+        // 构造单词查找树编译表
+        if (x.isLeaf()){
+            st[x.ch] = s; // 为某个字符所在的索引 赋值
+            return;
+        }
+        buildCode(st,x.left,s+'0');
+        buildCode(st,x.right,s+'1');
+
+    }
+```
+
+#### 构造单词查找树   
+
+```java
+// 构造单词查找树
+    private static Node builtTrie(int[] freq) {
+        // 使用多棵单节点树初始化优先级队列
+        MinPQ<Node> pq = new MinPQ<Node>();
+        for (char c = 0; c <R ; c++)
+            // 遍历所有的在字母表中的c
+            // 如果他的频率大于0 就说明存在这个字母
+            if (freq[c]>0)  
+                pq.insert(new Node(c,freq[c],null,null));
+
+        // 那么现在就存在了一个都是单独节点的森林了
+        
+        // 由底部向上构造查找树
+        // 从队列吐出两个频率最小的节点 
+        // 构造一个空的节点做为他们的父亲 
+        // 并且插入队列
+        while (pq.size()>1){
+            Node x = pq.delMin();
+            Node y = pq.delMin();
+            Node parent = new Node('\0',x.freq+y.freq,x,y);
+            pq.insert(parent);
+            
+        }
+        return pq.delMin();
+
+    }
+```
+#### 最优性
+加权外部路径长度：所有叶子和他的权重和深度的积的和
+
+为什么是一种最优的编码格式呢？   
+
+### LZW 算法  
+
+基础:维护一张字符串键和定长编码的编译表   
+
+#### 压缩算法 
+
+```java
+public static void compress() {
+        // 读取需要压缩的字符串
+        String input = BinaryStdIn.readString();
+        // 创建一个单词查找树
+        TST<Integer> st = new TST<>();
+        // 将字符表中所有的字符放入单词查找树
+        for (int i = 0; i < R; i++)
+            st.put("" + (char) i, i);
+        int code = R + 1; // R 为文件结束的(EOF)编码
+        while (input.length() > 0) {
+            // 找到字符串在单词查找树中的最长的前缀
+            String s = st.longestPrefixOf(input);
+            BinaryStdOut.write(st.get(s), W);
+            int t = s.length();
+            // 在符号表中创建新的编码
+            if (t < input.length() && code < L) {
+                st.put(input.substring(0, t + 1), code++);
+                input = input.substring(t);
+            }
+        }
+        BinaryStdOut.write(R, W);
+        BinaryStdOut.close();
+    }
+```
+
+#### LZW压缩的展开
+
+```java
+public static void expand() {
+        String[] st = new String[L];
+        int i; // 下一个补全的编码符
+        for (i = 0; i < R; i++) {// 用字符初始化编译表
+            st[i] = "" + (char) i;
+        }
+        st[i++] = " "; // 文件结束标记的前瞻字符
+
+        int codeword = BinaryStdIn.readInt(W);
+
+        String val = st[codeword];
+        while (true) {
+
+            BinaryStdOut.write(val); // 输出当前子字符串
+
+            codeword = BinaryStdIn.readInt(W);
+            if (codeword == R) break;
+
+            String s = st[codeword]; // 获取下一个编码
+            if (i == codeword)       // 如果前瞻字符不可用
+                s = val + val.charAt(0);// 根据上个字符串的首字母得到编码的字符串
+            if (i < L)
+                st[i++] = val + s.charAt(0); //为编译表添加新的条目
+            // 更新当前编码
+            val = s;
+
+        }
+        BinaryStdOut.close();
+    }
+```
+
+* 获取当前编码 
+* 找到在编译表中的位置   
+* 输出当前字符串
+* 获取下一个编码 
+* 为编译表添加新的条目
+* 更新当前编码
+
 
